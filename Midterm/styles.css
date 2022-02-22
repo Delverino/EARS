@@ -1,0 +1,110 @@
+
+/* Include these in all documents
+        <link href='https://fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet'>
+        <link href="styles.css" rel="stylesheet">
+ */
+ :root {
+    --dark-color: rgb(0, 0, 0);
+    --light-color: rgb(255, 255, 255);
+    --tertiary-color: rgb(120, 130, 147);
+    --highlight-color: rgb(237, 32, 37);
+}
+body,html {
+    background-color: var(--light-color);
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Times New Roman', Times, serif;
+}   
+h1, h2 {
+    font-family: 'Abril Fatface', Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    letter-spacing: 2px;
+    word-spacing: 5px;
+}
+h2 {
+    font-size: 40px;
+}
+p, input, textarea {
+    text-align: left;
+    line-height: 1.5em;
+    align-items: left;
+    display: block;
+}
+li {
+    display: inherit;
+    font-size: inherit;
+} 
+ul.main-nav {
+    display: flex;
+    list-style: none;
+    padding-right: 0;
+    position: absolute;
+    right: 0px;
+    top: 40px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: space-around;
+    justify-content: space-evenly;
+    align-items: center;
+}
+ul.bottom-nav {
+    display: flex;
+    padding-left: 10px;
+    margin-top: 0;
+    position: absolute;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: space-around;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+#right-nav {
+    display: flex;
+    align-items: flex-end;
+    left: auto;
+    right: 0;
+}
+li.main-nav {
+    margin: 10px; 
+    color: var(--light-color);
+    font-size: 22px
+}
+nav.header {
+    height: 100px; 
+    background-color: var(--dark-color); 
+    margin: 0px
+}
+.footer{
+    height: 100px;
+    background-color: var(--dark-color);
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+body,html {
+    margin: 0px;
+    text-align: center;
+}
+div#page-parent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+a { text-decoration: none; }
+
+.banner {
+    height: 200px;
+    background-color:var(--dark-color);
+    position: relative;
+    text-align: center;
+}
+.middle-image { height: inherit; }
+.logo { height:  80px;
+        position: absolute;
+        left: 30px;
+        top: 9px
+}
+.text-box, form {
+    width: 90%;
+    max-width: 600px;
+}
