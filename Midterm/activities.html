@@ -5,6 +5,25 @@
         <title>Activities</title>
         <link href='https://fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet'>
         <link href="styles.css" rel="stylesheet">
+        <style>
+            .left-col, .right-col {
+                text-align: center;
+                display: inline-block;
+                width: 49%;
+                margin: 0;
+            }
+            .a-img {
+                width: 80%;
+                height: auto;
+            }
+            .a-img:hover {
+                position: relative;
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+            .center { text-align: center; }
+        </style>
     </head>
     <body>
         <!-- https://commons.wikimedia.org/wiki/File:Cartoonists_shop_logo.png -->
@@ -24,17 +43,39 @@
         </nav> 
         <div id="page-parent">
             <div class="text-box">
-                <h1>Activities</h1>
-                <h2>Home of the wildcats!</h2>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus facilis, 
-                        repellendus voluptatum, accusamus atque aliquid, rem nihil quos unde id nesciunt a sed 
-                        asperiores labore? Tempora adipisci neque doloribus perspiciatis!
-                    </p>
-                <h2>Get your head in the game</h2>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus facilis, 
-                        repellendus voluptatum, accusamus atque aliquid, rem nihil quos unde id nesciunt a sed 
-                        asperiores labore? Tempora adipisci neque doloribus perspiciatis!
-                    </p>
+                <h1>Activities and Athletics</h1>
+                <h2>Home of the Wildcats!</h2>
+                <h3>Congratulations to the Fall 2021 All-State Champions!</h3>
+                <p>
+                    Here at East High, we are proud to be represented by some of the state's best athletes. With our large selection of sports, we have something for everyone! There are many ways to get involved.
+                </p>
+                <div class='left-col'>
+                    <img src="images/basketball.jpg" class="a-img">
+                    <h4>
+                        Boys Varsity Basketball defeats rival West High Knights in State Championship Game
+                    </h4>
+                </div>
+                <div class='right-col'>
+                    <img src="images/field-hockey.png" class="a-img">
+                    <h4>
+                        New Varsity Field Hockey becomes State Championship Finalists in first season at East High
+                    </h4>
+                </div>
+                <p class=center>Support our champions by visiting our merchandise store!</p>
+                <h2>Get your head in the game!</h2>
+                <p>
+                    With more than 30 clubs, the Wildcats have many opportunities to explore their extracurricular interests and develop skills. Our students go above and beyond, dedicating time after school and on weekends to pursue their passions and accomplish their goals.
+                </p>
+                <h3>Robotics</h3>
+                <img src="images/robotics.jpeg" class="a-img">
+                <p>
+                    Our robotics teams work hard to achieve their rank at state and national competitions, hoping to qualify for the worlds tournament.
+                </p>
+                <h3>Music</h3>
+                <img src="images/music.jpeg" class="a-img">
+                <p>
+                    Musically inclined students work all semester to perfect their pieces, working towards the student-run Coffeehouse concert in December.
+                </p>
             </div>
         </div>
         <div class=footer>
@@ -42,9 +83,14 @@
                 <a href="tel:1234567890"><li class="main-nav">123-456-7890</li></a>
                 <a href="mailto:wildcats@easthigh.net"><li class="main-nav">wildcats@easthigh.net</li></a>
             </ul>
-            <!-- <ul class="bottom-nav" id="right-nav">
-                
-            </ul> -->
         </div>
     </body>
 </html>
+
+<!--
+Amelia's thoughts (did not want to change anything too large re style)
+-> p sure if there isn't enough content then the footer floats
+-> not in love with the set width of the textbox, messed things up to
+    work outside of it
+-> do yall like the two columns more or the one column? columns can/will be wider when i can work around the issue of the text-box div
+-->

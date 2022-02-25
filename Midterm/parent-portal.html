@@ -5,6 +5,13 @@
         <title>Parent Portal</title>
         <link href='https://fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet'>
         <link href="styles.css" rel="stylesheet">
+        <style>
+            .left-col, .right-col {
+                display: inline-block;
+                width: 49%;
+                margin: 0;
+            }
+        </style>
     </head>
     <body>
         <!-- https://commons.wikimedia.org/wiki/File:Cartoonists_shop_logo.png -->
@@ -25,26 +32,28 @@
         <div id="page-parent">
             <div class="text-box">
                 <h1>Parent Portal</h1>
-                <h2>Home of the wildcats!</h2>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus facilis, 
-                        repellendus voluptatum, accusamus atque aliquid, rem nihil quos unde id nesciunt a sed 
-                        asperiores labore? Tempora adipisci neque doloribus perspiciatis!
-                    </p>
-                <h2>Get your head in the game</h2>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus facilis, 
-                        repellendus voluptatum, accusamus atque aliquid, rem nihil quos unde id nesciunt a sed 
-                        asperiores labore? Tempora adipisci neque doloribus perspiciatis!
-                    </p>
+                <h3>This page requires a login</h3>
+                <div class=left-col>
+                    <h4>Students</h4>
+                    Please log in using your school email and password. </br></br>
+                    If you have forgotten your password, please contact your dean for the password reset link.
+                </div>
+                <div class=right-col>
+                    <h4>Parents</h4>
+                    Please log in using your email and password. </br></br>
+                    If you have forgotten your password, please contact your student's dean for the password reset link.
+                </div>
             </div>
+            <p>This page is protected</p>
+            <label>Username or Email:</label><input type="text" name='user' id='the_user' required='1' placeholder = "first.last@wildcats.edu"><br/>
+            <label>Password:</label> <input type="text" name='pass' id='the_pass' required='1' placeholder = "password" ><br />
+            <input type="submit" value="Login"><br/><br/>
         </div>
         <div class=footer>
             <ul class="bottom-nav">
                 <a href="tel:1234567890"><li class="main-nav">123-456-7890</li></a>
                 <a href="mailto:wildcats@easthigh.net"><li class="main-nav">wildcats@easthigh.net</li></a>
             </ul>
-            <!-- <ul class="bottom-nav" id="right-nav">
-                
-            </ul> -->
         </div>
     </body>
 </html>
