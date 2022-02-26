@@ -2,23 +2,59 @@
 <html lang="en" dir="ltr">
     <head>
         <style type="text/css">
-        
         .pic-center-display {
             width: 100%;
             height: auto;
         }
 
-        
+        .question {
+            cursor: pointer;
+            padding: 10px;
+            text-align: center;
+            background-color:lightgray;
+            border: solid 2px #b67e7e;
+        }
+
+        .answer {
+            padding: 10px;
+            text-align: center;
+            border: solid 2px #b67e7e;
+        }
+
+
+        .answer {
+            padding: 30px;
+            display: none;
+        }
+
+        a:hover {
+            color: rgb(160,31,36);
+        }
+
+        table, th, td {
+            border:1px solid #694E4E;
+        }
 
         </style>
-        <meta charset="utf-8">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script> 
+        $(document).ready(function(){
+            $(".question").click(function(){
+                $(this).next('.answer').slideToggle("slow");
+            });
+        });
+        </script>
+
         <title>Admission</title>
         <link rel="icon" href="images/logo-icon.png" type="image/png">
         <link href='https://fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet'>
         <link href="styles.css" rel="stylesheet">
     </head>
+
     <body>
         <!-- https://commons.wikimedia.org/wiki/File:Cartoonists_shop_logo.png -->
+
         <nav class="header">
             <a href="index.html">
                 <img src="images/cat_logo.png" alt="Wildcats logo" class = "logo">
@@ -33,45 +69,121 @@
                 <a href="classes.html"><li class = "main-nav">Classes</li></a>
             </ul>
         </nav> 
+
+        <button onclick="goTop()" id="BacktoTop" title="Go to top">Top</button>
+
+        <script>
+            var mybutton = document.getElementById("BacktoTop");
+            window.onscroll = function() {scroll()};
+            
+            function scroll() {
+              if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                mybutton.style.display = "block";
+              } else {
+                mybutton.style.display = "none";
+              }
+            }
+
+            function goTop() {
+              document.body.scrollTop = 0;
+              document.documentElement.scrollTop = 0;
+            }
+        </script>
+
         <div id="page-parent">
             <div class="text-box">
                 <h1>Admission</h1>
-                <h2>Become an EastHigh student</h2>
-                <p>
-                    Apply Online: We are using a rolling admission system. Our application for 2022-2023 is now available on the portal! <br>
-                    Application materials: All application materials must be submitted via the portal. <br>
-                    Apply for financial aid:  We offer $10 million annually in need-based financial aid. <br>
-                    <br>
-                    We do not discriminate on the basis of race, color, religion, gender, sexual orientation, national origin, or any disabilities in the admission process.
+                <h2>Become one of the Wildcats!</h2>
+                <p style=font-size:20px;>
+                    <strong>Apply Online: </strong> We are using a rolling admission system. Our application for 2022-2023 is now available on the portal! <br>
+                    <strong>Application Deadline: </strong> 01/15 <br>
+                    <strong>Application materials: </strong>Standardized Testings, Essays, Recommendations. All application materials must be submitted via the portal. <br>
+                    <strong>Tuition and fee: </strong><br>
+                    <div style="width:100%">
+                    <table style="width:100%">
+                        <tr>
+                          <th></th>
+                          <th>Cost</th>
+                        </tr>
+                        
+                        <tr>
+                          <td> Tuition </td>
+                          <td> $53,350 </td>
+                        </tr>
+                        <tr>
+                          <td> Books and supplies (estimated) </td>
+                          <td> $525</td>
+                        </tr>
+                        <tr>
+                          <td>Total</td>
+                          <td> $53875</td>
+                        </tr>
+                    </table>
+                    </div>
                 </p>
+                <p style=font-size:20px;>
+                    <strong>Apply for financial aid: </strong> We offer $10 million annually in need-based financial aid.<br>
+                </p>
+
+                <strong style=font-size:24px;>We do not discriminate on the basis of race, color, religion, gender, sexual orientation, nationality, or any disabilities in the admission process.</strong>
+                
+
                 <div>
+                    <br>
+                    <br>
                     <img src="images/high-school.jpg" class="pic-center-display">
                     
                 </div>
 
                 <h2>What is the profile of a future EastHigh student?</h2>
-                <p>
-                    Caring, Creative and Collaborative: <br>
-                    While Tufts students are as multidimensional as the Hill they call home, these descriptors tend to define our community. Located just five miles outside of Boston, Tufts values close student-faculty collaboration, unique interdisciplinary research, and diversities of all kinds.
+                <p style=font-size:20px;>
+                    <strong style=font-size:25px;>
+                        Caring, Creative and Collaborative: <br>
+                    </strong>
+                    TODO
                 </p>
 
-                <div>
-                    <img src="images/profile.jpg" class="pic-center-display">
-                        
-                </div>
-
-                <h2>Admissions FAQs</h2>
-                    How long does it take to get a decision: <br>
-                    We will release our decision after 31 January on a rolling basis. <br>
-                    <br>
-                    Is it important to visit EastHigh during the admission process: <br>
-                    Yes, it's important for us to interview applicants and for students to explore our campus. <br>
-                    
                 <div>
                     <img src="images/auditorium.jpg" class="pic-center-display">
                         
                 </div>
+
+                <h2>Admissions FAQs</h2>
+                <div class="question" style=font-size:18px;><a>When will I be notified of the admissions decision??</a> </div>
+                <div class="answer" style=font-size:18px;>We will release our decision after January 31th on a rolling basis.</div> 
                 <br>
+
+                <div class="question" style=font-size:18px;><a>Is it important to visit EastHigh during the admission process?</a> </div>
+                <div class="answer" style=font-size:18px;>Yes, it's important for us to interview applicants and for students to explore our campus.</div> 
+                <br>
+
+                <div class="question" style=font-size:18px;><a>Where do the teachers come from?</a> </div>
+                <div class="answer" style=font-size:18px;>The majority of our teachers are from North America, and we also have teachers from the UK, France, Japan, Australia and so on.</div> 
+                <br>
+
+                <div class="question" style=font-size:18px;><a>What if I missed the application deadline?</a> </div>
+                <div class="answer" style=font-size:18px;>Unfortunately, late applications won't be accepeted, we are sorry about that.</div> 
+                <br>
+
+                <div class="question" style=font-size:18px;><a>Are sports, arts, and music matter?</a> </div>
+                <div class="answer" style=font-size:18px;>Absolutely! Students are encouraged to elaborate on their experience in these areas in the application process. </div> 
+                <br>
+
+                <div class="question" style=font-size:18px;><a>What kinds of decisions will I possibly get?</a> </div>
+                <div class="answer" style=font-size:18px;> Acceptance, Refusal, and Waiting List.</div> 
+                <br>
+
+                <div class="question" style=font-size:18px;><a>How should I interpret being offered on waitlist?</a> </div>
+                <div class="answer" style=font-size:18px;>Being on the waitlist means that the candidates have the qualities to be admitted but we are currently unable to offer places for various reason, such as the class is full .</div> 
+                <br>
+
+                <div class="question" style=font-size:18px;><a>Do interviews matter?</a> </div>
+                <div class="answer" style=font-size:18px;>Yes, candidates are encouraged to schedule an interview during their campus visit, either with our admission member or an alumni.</div> 
+                <br>
+
+
+                <br>
+
             </div>
         </div>
         <div class=footer>
