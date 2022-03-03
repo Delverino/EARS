@@ -1,10 +1,79 @@
 <!DOCTYPE html>
+<!--
+TODO:
+
+    Turn plan into code outline
+    Code it
+
+-->
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
+        <meta keyword="High School, East High, Musical, Home, Principal, Utah">
         <title>East High</title>
+        <link rel="icon" href="images/logo-icon.png" type="image/png">
         <link href='https://fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet'>
         <link href="styles.css" rel="stylesheet">
+        <style>
+            text-box {
+                display: inline-block;
+            }
+            .slideshow{
+                width:533.33px;
+                height:400px;
+                margin: auto;
+                position:relative;
+                border: black 2px solid;
+            }
+            .slideshow button{
+                font-size:40px;
+                color:var(--light-color);
+                background-color: var(--dark-color);
+                opacity: 0.8;
+                width:50px;
+                height: 100px;
+                position: absolute;
+                left: -2px;
+                top:150px;
+            }
+            #right-button {
+                left:auto;
+                right:-2px;
+            }
+            p {
+                font-size: 20px;
+            }
+        </style>
+        <script
+        src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+        <script>
+            let curr = 0;
+            let images = ["slideshow-1.jpg","slideshow-2.jpg","slideshow-3.jpg"];
+            let fading = false;
+            function slideshow(direction){
+                fading = true;
+                curr += direction;
+                curr += images.length;
+                curr = curr % images.length;
+                $(".slide").fadeOut(1000, function() {
+                    $(".slide").attr("src", "images/"+images[curr]);
+                    $(".slide").fadeTo(1000, 1)
+                    fading = false;
+                })
+            }
+            $(document).ready(function(){
+                $("button").click(function () {
+                    if($(this).attr("id") == "right-button" && !fading){
+                        slideshow(1);
+                    }
+                    if($(this).attr("id") == "left-button" && !fading){
+                        slideshow(-1);
+                    }
+                })
+            })
+        </script>
     </head>
     <body>
         <!-- https://commons.wikimedia.org/wiki/File:Cartoonists_shop_logo.png -->
@@ -24,17 +93,38 @@
         </nav> 
         <div id="page-parent">
             <div class="text-box">
-                <h1>Welcome to East High</h1>
-                <h2>Home of the wildcats!</h2>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus facilis, 
-                        repellendus voluptatum, accusamus atque aliquid, rem nihil quos unde id nesciunt a sed 
-                        asperiores labore? Tempora adipisci neque doloribus perspiciatis!
+                <h1>Welcome to East High!</h1>
+                <div class="slideshow">
+                    <img class="slide" src="images/slideshow-1.jpg" height="400px">
+                    <button id="right-button">
+                        >
+                    </button>
+                    <button id="left-button">
+                        <
+                    </button>
+                </div>
+                <h2>Who We Are</h2>
+                    <p>East high is an elite private high school in beautiful Salt Lake City.
+                        East high has a little something for everyone. We have classes on everything
+                        from european history to pre-calculus. Looking for extra curricular activities?
+                        East high has a nationally acclaimed musical theatre club, as well as a competitive
+                        basketball team. Go Wildcats! For more information you can visit 
+                        <strong><a href="about-us.html">About Us</a></strong>.
                     </p>
-                <h2>Get your head in the game</h2>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus facilis, 
-                        repellendus voluptatum, accusamus atque aliquid, rem nihil quos unde id nesciunt a sed 
-                        asperiores labore? Tempora adipisci neque doloribus perspiciatis!
+                <h2>Our Community</h2>
+                    <p>We at East High work hard to foster our community. Our principal, guidance counselors,
+                        heck, even our janitors join in for our famous school flash mob dance numbers. 
+                        Whoever you are, you'll find a place at our school. We're sure of it.
                     </p>
+                <h2>Join the Wildcats!</h2>
+                    <p>We want you, yes, you! To learn more, please visit our 
+                        <strong><a href="admission.html">Admissions Page</a></strong>.
+                    </p>
+                </br>
+                </br>
+                </br>
+                </br>
+                </br>
             </div>
         </div>
         <div class=footer>
