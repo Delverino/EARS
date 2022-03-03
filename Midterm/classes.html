@@ -23,6 +23,7 @@
             border-radius: 10px;
             font-family: Arial;
             text-align: center;
+            width: 250px;
           }
           
           .title {
@@ -36,9 +37,61 @@
             background-color: #def1ff;
           }
           
-          li {
+          .subject li {
             display: list-item;
           }
+          
+          .button {
+            transition-duration: 0.4s;
+            background-color: white;
+            color: black;
+            padding: 7px 15px;
+            text-align: center;
+            display: inline-block;
+            font-size: 16px;
+            border: 2px white solid;
+            border-radius: 5px;
+          }
+
+          .button:hover {
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white !important;
+          }
+          
+          #art  { color: #684187; }
+          #hum  { color: #427ef5; }
+          #nat  { color: #4aa85b; }
+          #math { color: #bf2d1d; }
+          #soc  { color: #f08426; }
+          #lang { color: #f2a7de; }
+          
+          .info {
+            display: none;
+            line-height: 1.8;
+            padding: 15px;
+            margin: 20px;
+            border-radius: 10px;
+            font-family: Arial;
+            text-align: center;
+            width: auto;
+            background-color: rgba(255, 255, 255, 0.3);
+          }
+          
+          .content {
+            vertical-align: middle;
+            text-align: left;
+          }
+          
+          .img-container img {
+            border: 2px rgba(0, 0, 0, 0.6) solid;
+            margin: 10px;
+          }
+          
+          .img-container {
+            text-align: center;
+          }
+          
+          
         
         </style>
         
@@ -65,57 +118,213 @@
             </div>
             
             <div class="class-list">
-              <div class="subject" style="background-color: #684187;">
-                <img src="images/arts.png" alt="arts" width="100px">
-                <div class="title">Arts</div>
-                <ul style="text-align: left;">
-                  <li>Fine Art</li>
-                  <li>Intro to Architecture</li>
-                  <li>Theatre</li>
-                  <li>Choir</li>
-                  <li>Ceramics</li>
-                  <li>Band</li>
-                </ul>
+              <div class="subject" style="background-color: #684187;" id="artS">
+                <table>
+                  <td style="width: 250px;">
+                    <img src="images/arts.png" alt="arts" height="100px">
+                    <div class="title">Arts</div>
+                    <ul style="text-align: left;">
+                      <li>Fine Art</li>
+                      <li>Photography</li>
+                      <li>Theatre</li>
+                      <li>Choir</li>
+                      <li>Ceramics</li>
+                      <li>Band</li>
+                    </ul>
+                    <input type="button" class="button" value="More Info" id="art">
+                  </td>
+                  <td class="info" id="artinfo">
+                    <div class="content">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                      <div class="img-container">
+                        <img src="images/musical.jpg" alt="musical" height="150px">
+                        <img src="images/dance.jpg" alt="dance" height="150px">
+                        <img src="images/fineart.jpg" alt="fine art" height="150px">
+                      </div>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </div>
+                  </td>
+                </table>
               </div>
-              <div class="subject" style="background-color: #427ef5;">
-                <img src="images/humanities.png" alt="arts" width="100px">
-                <div class="title">Humanities</div>
-                <ul style="text-align: left;">
-                  <li>Literature</li>
-                  <li>Language and Literature</li>
-                  <li>Media Studies</li>
-                  <li>Creative Writing</li>
-                  <li>Poetry and Lyricism</li>
-                  <li>Theatrical Literature</li>
-                </ul>
+              <div class="subject" style="background-color: #427ef5;" id="humS">
+                <table>
+                  <td style="width: 250px;">
+                    <img src="images/humanities.png" alt="hum" height="100px">
+                    <div class="title">Humanities</div>
+                    <ul style="text-align: left;">
+                      <li>Literature</li>
+                      <li>Language and Literature</li>
+                      <li>Media Studies</li>
+                      <li>Creative Writing</li>
+                      <li>Poetry and Lyricism</li>
+                      <li>Theatrical Literature</li>
+                    </ul>
+                    <input type="button" class="button" value="More Info" id="hum">
+                  </td>
+                  <td class="info" id="huminfo">
+                    <div class="content">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                      <div class="img-container">
+                        <img src="images/class.jpg" alt="class" height="150px">
+                        <img src="images/act.jpg" alt="act" height="150px">
+                        <img src="images/read.jpg" alt="read" height="150px">
+                      </div>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+                    </div>
+                  </td>
+                </table>
               </div>
-              <div class="subject" style="background-color: #4aa85b;">
-                <img src="images/sciences.png" alt="arts" width="100px">
-                <div class="title">Natural Sciences</div>
-                <ul style="text-align: left;">
-                  <li>Chemistry</li>
-                  <li>Biology</li>
-                  <li>Physics</li>
-                  <li>Design Technology</li>
-                  <li>Ecology</li>
-                  <li>Health Science</li>
-                </ul>
+              <div class="subject" style="background-color: #4aa85b;" id="natS">
+                <table>
+                  <td style="width: 250px;">
+                    <img src="images/sciences.png" alt="sci" height="100px">
+                    <div class="title">Natural Sciences</div>
+                    <ul style="text-align: left;">
+                      <li>Chemistry</li>
+                      <li>Biology</li>
+                      <li>Physics</li>
+                      <li>Design Technology</li>
+                      <li>Ecology</li>
+                      <li>Health Science</li>
+                    </ul>
+                    <input type="button" class="button" value="More Info" id="nat">
+                  </td>
+                  <td class="info" id="natinfo">
+                    <div class="content">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                      <div class="img-container">
+                        <img src="images/lab.png" alt="lab" height="150px">
+                        <img src="images/chem.png" alt="chem" height="150px">
+                        <img src="images/robotics.png" alt="robotics" height="150px">
+                      </div>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+                    </div>
+                  </td>
+                </table>
               </div>
-              <div class="subject" style="background-color: #bf2d1d;">
-                <img src="images/math.png" alt="arts" width="100px">
-                <div class="title">Mathematics</div>
-                <ul style="text-align: left;">
-                  <li>Statistics</li>
-                  <li>Calculus</li>
-                  <li>Linear Algebra</li>
-                  <li>Trigonometry</li>
-                  <li>Discrete Mathematics</li>
-                  <li>Probability Theory</li>
-                </ul>
+              
+              <div class="subject" style="background-color: #bf2d1d;" id="mathS">
+                <table>
+                  <td style="width: 250px;">
+                    <img src="images/math.png" alt="math" height="100px">
+                    <div class="title">Mathematics</div>
+                    <ul style="text-align: left;">
+                      <li>Statistics</li>
+                      <li>Calculus</li>
+                      <li>Linear Algebra</li>
+                      <li>Trigonometry</li>
+                      <li>Discrete Mathematics</li>
+                      <li>Probability Theory</li>
+                    </ul>
+                    <input type="button" class="button" value="More Info" id="math">
+                  </td>
+                  <td class="info" id="mathinfo">
+                    <div class="content">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                      <div class="img-container">
+                        <img src="images/lecture.jpg" alt="lecture" height="150px">
+                        <img src="images/collab.jpg" alt="collab" height="150px">
+                        <img src="images/chalk.jpg" alt="chalk" height="150px">
+                      </div>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </div>
+                  </td>
+                </table>
+              </div>
+              
+              <div class="subject" style="background-color: #f08426;" id="socS">
+                <table>
+                  <td style="width: 250px;">
+                    <img src="images/socscience.png" alt="soc" height="100px">
+                    <div class="title">Social Sciences</div>
+                    <ul style="text-align: left;">
+                      <li>Psychology</li>
+                      <li>Economics</li>
+                      <li>Geography</li>
+                      <li>Global Politics</li>
+                      <li>World History</li>
+                      <li>US History</li>
+                    </ul>
+                    <input type="button" class="button" value="More Info" id="soc">
+                  </td>
+                  <td class="info" id="socinfo">
+                    <div class="content">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                      <div class="img-container">
+                        <img src="images/globe.jpg" alt="globe" height="150px">
+                        <img src="images/discuss.jpg" alt="discuss" height="150px">
+                        <img src="images/present.jpg" alt="present" height="150px">
+                      </div>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </div>
+                  </td>
+                </table>
+              </div>
+              
+              <div class="subject" style="background-color: #f2a7de;" id="langS">
+                <table>
+                  <td style="width: 250px;">
+                    <img src="images/language.png" alt="lang" height="100px">
+                    <div class="title">Language Acquisition</div>
+                    <ul style="text-align: left;">
+                      <li>Spanish</li>
+                      <li>French</li>
+                      <li>Portugese</li>
+                      <li>Mandarin</li>
+                      <li>Latin</li>
+                      <li>Japanese</li>
+                    </ul>
+                    <input type="button" class="button" value="More Info" id="lang">
+                  </td>
+                  <td class="info" id="langinfo">
+                    <div class="content">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                      <div class="img-container">
+                        <img src="images/spanish.jpg" alt="spanish" height="150px">
+                        <img src="images/paris.jpg" alt="paris" height="150px">
+                        <img src="images/mandarin.jpg" alt="mandarin" height="150px">
+                      </div>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </div>
+                  </td>
+                </table>
               </div>
             </div>
-          </div>
+        </div>
+        
+        <script type="text/javascript">
+          
+        window.onload = function() {
+          buttons = document.getElementsByClassName("button");
+          
+          for (let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("click", buttonPress);
+          }
+          
+        }
+        
+        function buttonPress() {
+          
+          button = document.getElementById(this.id);
+          subject = document.getElementById(this.id + "S");
+          details = document.getElementById(this.id + "info");
+          
+          if (button.value == "More Info") {
+            button.value = "Less Info";
+            details.style.display = "block";
+            subject.style.width = "auto";
             
+          } else {
+            button.value = "More Info";
+            details.style.display = "none";
+            subject.style.width = "250px";
+          }
+        }
+        
+          
+        </script>
             
         
         <div class=footer>
