@@ -2,6 +2,8 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta keyword="High School, East High, Musical, News, Principal, Utah">
         <title>News</title>
         <link rel="icon" href="images/logo-icon.png" type="image/png">
         <link href='https://fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet'>
@@ -47,7 +49,25 @@
     <body>
         
         
-        <!-- https://commons.wikimedia.org/wiki/File:Cartoonists_shop_logo.png -->
+        <button onclick="goTop()" id="BacktoTop" title="Go to top">Top</button>
+
+        <script lang="javascript">
+            var mybutton = document.getElementById("BacktoTop");
+            window.onscroll = function() {scroll()};
+            
+            function scroll() {
+              if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                mybutton.style.display = "block";
+              } else {
+                mybutton.style.display = "none";
+              }
+            }
+
+            function goTop() {
+              document.body.scrollTop = 0;
+              document.documentElement.scrollTop = 0;
+            }
+        </script>
         <nav class="header">
             <a href="index.html">
                 <img src="images/cat_logo.png" alt="Wildcats logo" class = "logo">
