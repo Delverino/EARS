@@ -60,7 +60,10 @@
         
         
         <button onclick="goTop()" id="BacktoTop" title="Go to top">Top</button>
-
+        <script
+        src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
         <script lang="javascript">
             var mybutton = document.getElementById("BacktoTop");
             window.onscroll = function() {scroll()};
@@ -77,6 +80,16 @@
               document.body.scrollTop = 0;
               document.documentElement.scrollTop = 0;
             }
+            $(document).ready(function(){
+              $(".dropbtn").click(function(){
+              $(myDropdown).toggle(100);
+              });
+              $(window).click(function(e){
+              if (!e.target.matches('.dropbtn')) {
+                  $(myDropdown).hide(100);
+              }
+              })
+            })
         </script>
         <nav class="header">
             <a href="index.html">
@@ -90,6 +103,21 @@
                 <a href="parent-portal.html"><li class = "main-nav">Parents</li></a>
                 <a href="activities.html"><li class = "main-nav">Activities</li></a>
                 <a href="classes.html"><li class = "main-nav">Classes</li></a>
+                <li>        
+                  <div class="dropdown"> 
+                      <button class="dropbtn">Menu
+                      </button>
+                      <div class="dropdown-content" id="myDropdown">
+                          <a href="index.html">Home</a>
+                          <a href="about-us.html">About</a>
+                          <a href="admission.html">Admission</a>
+                          <a href="news.html">News</a>
+                          <a href="parent-portal.html">Parents</a>
+                          <a href="activities.html">Activities</a>
+                          <a href="classes.html">Classes</a>
+                      </div>
+                  </div> 
+                </li>
             </ul>
         </nav> 
         <div id="page-parent">
