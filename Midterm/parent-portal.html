@@ -14,8 +14,39 @@
                 width: 45%;
                 margin: 10px;
             }
-
+            .left-col { text-align: right; }
+            .right-col { text-align: left; }
+            form  { display: table; }
+            label { display: table-cell; }
+            input { display: table-cell; }
+            .question {
+                cursor: pointer;
+                padding: 10px;
+                text-align: center;
+                background-color:lightgray;
+                border: solid 2px #b67e7e;
+            }
+            .answer {
+                padding: 10px;
+                text-align: center;
+                border: solid 2px #b67e7e;
+            }
+            .answer {
+                padding: 30px;
+                display: none;
+            }
+            a:hover {
+                color: rgb(160,31,36);
+            }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script> 
+            $(document).ready(function(){
+                $(".question").click(function(){
+                    $(this).next('.answer').slideToggle("slow");
+                });
+            });
+        </script>
     </head>
     <body>
         <button onclick="goTop()" id="BacktoTop" title="Go to top">Top</button>
@@ -41,6 +72,9 @@
             <a href="index.html">
                 <img src="images/cat_logo.png" alt="Wildcats logo" class = "logo">
             </a>
+            <div class="profile" style="border:solid 1px #333; float:left; text-align:center; padding:5px;" id="prof">
+                <i id=user></i><br>
+            </div>
             <ul class = "main-nav">
                 <a href="index.html"><li class = "main-nav">Home</li></a>
                 <a href="about-us.html"><li class = "main-nav">About</li></a>
@@ -55,22 +89,32 @@
             <div class="text-box">
                 <h1>Parent Portal</h1>
                 <h2>This page requires a login</h2>
-                <div class=left-col>
-                    <h3>Students</h3>
-                    Please log in using your school email and password. </br></br>
-                    If you have forgotten your password, please contact your dean for the password reset link.
+                <div class="question" style=font-size:18px;><a>Student Login</a> </div>
+                <div class="answer" style=font-size:18px;>Please log in using your school email and password.</div> 
+                <br>
+                
+                <div class="question" style=font-size:18px;><a>Parent Login</a> </div>
+                <div class="answer" style=font-size:18px;>Please log in using your email and password.</div> 
+                <br>
+                
+                <div class="question" style=font-size:18px;><a>Forgot Password?</a> </div>
+                <div class="answer" style=font-size:18px;>
+                    Please reach out to your or your student's faculty advisor about resetting your password or account.
+                </div> 
+                <br>
+                
+                <h3>This page is protected.</h3>
+                
+                <div class="left-col">
+                    Email:<br/>
+                    Password:<br/>
                 </div>
-                <div class=right-col>
-                    <h3>Parents</h3>
-                    Please log in using your email and password. </br></br>
-                    If you have forgotten your password, please contact your student's dean for the password reset link.
+                <div class="right-col">
+                    <input type="text" name='user' id='the_user' required='1' placeholder = "first.last@wildcats.edu"><br/>
+                    <input type="text" name='pass' id='the_pass' required='1' placeholder = "password"><br/>
                 </div>
+                
             </div>
-            <h3>This page is protected.</h3>
-            <label>Email:</label>
-            <input type="text" name='user' id='the_user' required='1' placeholder = "first.last@wildcats.edu"><br/>
-            <label>Password:</label>
-            <input type="text" name='pass' id='the_pass' required='1' placeholder = "password"><br/>
             <input type="submit" id="login" value="Login"><br/><br/>
         </div>
         <div class=footer>
@@ -86,6 +130,8 @@
                 password = document.getElementById("the_pass").value;
                 if(validateEmail(username)) {
                     alert("You have logged in successfully!");
+                    document.getElementById("user").innerHTML = username;
+                    document.getElementById("prof").style.visibility = "visible";
                 }
             };
             
