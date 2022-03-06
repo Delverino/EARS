@@ -1,11 +1,4 @@
 <!DOCTYPE html>
-<!--
-TODO:
-
-    Turn plan into code outline
-    Code it
-
--->
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
@@ -90,6 +83,7 @@ TODO:
                 min-width: 160px;
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 z-index: 1;
+                right: 10px;
             }
 
             .dropdown-content a {
@@ -98,7 +92,7 @@ TODO:
                 padding: 12px 16px;
                 text-decoration: none;
                 display: block;
-                text-align: left;
+                text-align: right;
             }
 /* TODO cut down css from w3 schools and make my own */
             .dropdown-content a:hover {
@@ -111,7 +105,7 @@ TODO:
             
             @media (max-width: 600px) {
                 .main-nav{display:none;}
-                .dropdown{display: inherit;}
+                .dropdown{display:inherit;}
             }
         </style>
         <script
@@ -142,6 +136,15 @@ TODO:
                         slideshow(-1);
                     }
                 })
+
+                $(".dropbtn").click(function(){
+                    $(myDropdown).toggle(100);
+                });
+                $(window).click(function(e){
+                    if (!e.target.matches('.dropbtn')) {
+                        $(myDropdown).hide(100);
+                    }
+                })
             })
         </script>
     </head>
@@ -166,23 +169,6 @@ TODO:
               document.documentElement.scrollTop = 0;
             }
         </script>
-        <script>
-            /* When the user clicks on the button, TODO turn into jquery
-            toggle between hiding and showing the dropdown content */
-            function myFunction() {
-              document.getElementById("myDropdown").classList.toggle("show");
-            }
-            
-            // Close the dropdown if the user clicks outside of it
-            window.onclick = function(e) {
-              if (!e.target.matches('.dropbtn')) {
-              var myDropdown = document.getElementById("myDropdown");
-                if (myDropdown.classList.contains('show')) {
-                  myDropdown.classList.remove('show');
-                }
-              }
-            }
-            </script>
         <nav class="header">
             <a href="index.html">
                 <img src="images/cat_logo.png" alt="Wildcats logo" class = "logo">
