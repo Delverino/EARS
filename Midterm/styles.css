@@ -179,3 +179,10 @@ a { text-decoration: none; }
     .dropdown{display:inherit;}
 }
 
+.profile {
+    display: none;
+    position:fixed;
+    right:10px;
+    top:5px;
+}
+
