@@ -1,11 +1,4 @@
 <!DOCTYPE html>
-<!--
-TODO:
-
-    Turn plan into code outline
-    Code it
-
--->
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
@@ -73,6 +66,15 @@ TODO:
                         slideshow(-1);
                     }
                 })
+// TODO Copy this into other pages
+                $(".dropbtn").click(function(){
+                    $(myDropdown).toggle(100);
+                });
+                $(window).click(function(e){
+                    if (!e.target.matches('.dropbtn')) {
+                        $(myDropdown).hide(100);
+                    }
+                })
             })
         </script>
     </head>
@@ -109,7 +111,25 @@ TODO:
                 <a href="parent-portal.html"><li class = "main-nav">Parents</li></a>
                 <a href="activities.html"><li class = "main-nav">Activities</li></a>
                 <a href="classes.html"><li class = "main-nav">Classes</li></a>
+                <!--  TODO Copy this into other pages -->
+                <li>        
+                    <div class="dropdown"> 
+                        <button class="dropbtn" onclick="myFunction()">Menu
+                        </button>
+                        <div class="dropdown-content" id="myDropdown">
+                            <a href="index.html">Home</a>
+                            <a href="about-us.html">About</a>
+                            <a href="admission.html">Admission</a>
+                            <a href="news.html">News</a>
+                            <a href="parent-portal.html">Parents</a>
+                            <a href="activities.html">Activities</a>
+                            <a href="classes.html">Classes</a>
+                        </div>
+                    </div> 
+                </li>
             </ul>
+            
+
         </nav> 
         <div id="page-parent">
             <div class="text-box">

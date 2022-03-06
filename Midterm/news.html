@@ -31,13 +31,23 @@
             
             table, tr, td {
               vertical-align: top;
-              margin: 10px;
+              margin: 0 auto;
               padding: 3px;
             }
             #events {
               border: 1px black solid;
               width: 300px;
               text-align: left;
+            }
+            
+            @media screen and (max-width: 700px) {
+              tr {
+                  display: grid;
+              }
+              #events tr {
+                  display: inline-table;
+                  text-align: center;
+              }
             }
 
             
@@ -88,12 +98,12 @@
                 <h1>News</h1>
             </div>
             
-            <div class="slideshow">
-              <img src="images/pose.jpg" alt="Slideshow here" width="90%">
-            </div>
-            ^ this will be a slideshow ^
+          
+            <img src="images/pose.jpg" alt="Image here" width="90%">
+            <br>
             
-            <table>
+            
+            <table id="main-body">
               <tr>
                 <td>
                   <div class="news">
@@ -103,39 +113,91 @@
                     <div class="details">
                       &nbsp;&nbsp; by Russell Brown - June 5, 2007
                     </div>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                     ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
-                     ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                     reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-                     pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-                     culpa qui officia deserunt mollit anim id est laborum.
+                    What time is it? Summertime! Students at East High started 
+                    the summer break by breaking out into song with elaborate 
+                    choreography, trashing the school in the process. "I don't 
+                    know what I did to deserve this," says Frank Stewart, the 
+                    school's only on-duty janitor toady. "I was wondering why 
+                    all of my coworkers chose today for their day off...apparently
+                    this is a regular thing the kids do." This was Frank's first
+                    year working at East High - and, unfortunately, his last year 
+                    of working at all. Shortly after the interview, a basketball 
+                    was thrown at Stewart's head, knocking him unconcious and 
+                    resulting in a coma he still hasn't woken up from yet. 
+                    "It was just part of our basketball team number," says 
+                    Troy Bolton, a self-proclaimed "main character" of the school.
+                    "He should have known we'd be throwing the basketballs offstage,
+                    we had to get rid of them before the transition into the chorus." 
+                    
                      <div class="headline">
                        Why Do Our Students Look Middle-Aged? An Expert Explains
                      </div>
                      <div class="details">
                        &nbsp;&nbsp; by Kate Oswald - May 23, 2007
                      </div>
-                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
-                     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                      ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
-                      ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                      reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-                      pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-                      culpa qui officia deserunt mollit anim id est laborum.
+                     You may take a look at our students and wonder: what are these 
+                     full on adults doing lurking around a high school? And what 
+                     did they do to the real students?? Before you call the police,
+                     we can assure you that there's a perfectly sound explanation. 
+                     To teach you about this strange phenomenon at East High, 
+                     we interviewed an expert on aging, Deborah Watson. 
+                     <br><br>
+                     "Well, the reason why these students look middle aged is 
+                     because, well...they are. This school has the worst graduation 
+                     rate in the country, some of your students have been seniors 
+                     for 25 years. I'm personally shocked that this school hasn't
+                     gone under investigation - there are actual teachers at this 
+                     school, right?" 
+                     <br><br>
+                     Watson's observations are completely right - as it turns
+                     out, students at East High tend to spend most if not all 
+                     of their designated studying time practicing elaborate
+                     songs and choreographies to be performed around school, 
+                     with no particular audience in mind. But it's not just the 
+                     students who are at fault - several students caught wandering 
+                     outside of their classes were told that their teachers encouraged
+                     such behaviour. Most students have been at East High for 
+                     at least 10 years, consistently failing every exam given 
+                     to them. 
+                     <br><br>
+                     The principal of East High was confronted with Watson's 
+                     remarks, to which he said "Don't listen to that old 
+                     hag she's clearly delusional. Sounds like someone's just 
+                     jealous they didn't get to go to an awesome school where you 
+                     can sing wherever and whenever you want!"
+                     
                       <div class="headline">
                         East High Goes Private, Community Riots
                       </div>
                       <div class="details">
                         &nbsp;&nbsp; by Candice Owens - April 2, 2007
                       </div>
-                       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
-                       eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                       ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
-                       ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                       reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-                       pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-                       culpa qui officia deserunt mollit anim id est laborum.
+                       East High recently made the decision to change from a 
+                       public school to a private school, and students will be 
+                       charged tuition starting in the fall. Several parents 
+                       have organized protests held outside the school, claiming 
+                       that this change is completely unjustified.
+                       <br><br>
+                       But why is East High going private in the first place? 
+                       According to the school principal, "We just wanted a really
+                       nice website to share our wildcat pride with the world, 
+                       but the company we contacted to create our website, EARS,
+                       claimed they were only able to do so if our school was 
+                       some sort of buisness that made money. I know it's a big 
+                       change, but just look at the website we got out of it!
+                       It's phenomenal!"
+                       <br><br>
+                       When polled about the new school website, 100% of 
+                       responses claimed it was the best website they had ever
+                       seen. "I love the slideshow on the homepage," one student 
+                       claimed, "you can tell EARS put a lot of effort into the 
+                       JQuery and Javascript."
+                       <br><br>
+                       "It's so responsive!" another student remarked. "I love
+                       how I can go on the website from my phone, tablet, or 
+                       computer, and it always looks and functions great. If this 
+                       website were graded, I'd give it an A+!"
+                       
                   </div>
                 </td>
                 <td>
@@ -180,35 +242,35 @@
                   </tr>
                   <tr>
                     <td style="text-align: right;"><b>October 15:</b></td>
-                    <td>Something</td>
+                    <td>Parent Conferences</td>
                   </tr>
                   <tr>
                     <td style="text-align: right;"><b>October 20:</b></td>
-                    <td>Something</td>
+                    <td>Science Fair</td>
                   </tr>
                   <tr>
                     <td style="text-align: right;"><b>October 25:</b></td>
-                    <td>Something</td>
+                    <td>College Seminar</td>
                   </tr>
                   <tr>
                     <td style="text-align: right;"><b>October 30:</b></td>
-                    <td>Something</td>
+                    <td>Drop Deadline</td>
                   </tr>
                   <tr>
                     <td style="text-align: right;"><b>October 31:</b></td>
-                    <td>Halloween Event!</td>
+                    <td>Halloween Dance!</td>
                   </tr>
                   <tr>
                     <td style="text-align: right;"><b>November 1:</b></td>
-                    <td>Something</td>
+                    <td>Field Trip Week!</td>
                   </tr>
                   <tr>
                     <td style="text-align: right;"><b>November 15:</b></td>
-                    <td>Something</td>
+                    <td>Fall Musical</td>
                   </tr>
                   <tr>
                     <td style="text-align: right;"><b>November 17:</b></td>
-                    <td>Something</td>
+                    <td>Book Sale</td>
                   </tr>
                 </table>
                 </td>
