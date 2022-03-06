@@ -133,3 +133,49 @@ a { text-decoration: none; }
     color: #843b62;
 }
 
+/* Credit to W3 Schools for the idea for the 
+    menu, this is the tutorial I followed: 
+    https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_dropdown_navbar_click */
+
+.dropdown {
+    float: right;
+    overflow: hidden;
+    display:none;
+}
+
+.dropdown .dropbtn {
+    font-size: inherit;
+    border: none;
+    color: var(--light-color);
+    background-color: inherit;
+    font-family: inherit;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 10px;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: right;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+@media (max-width: 750px) {
+    .main-nav{display:none;}
+    .dropdown{display:inherit;}
+}
+
