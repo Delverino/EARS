@@ -180,9 +180,10 @@ a { text-decoration: none; }
 }
 
 .profile {
-    display: none;
+    visibility: none;
     position:fixed;
     right:10px;
     top:5px;
+    text: white;
 }
 
