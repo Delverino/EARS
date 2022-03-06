@@ -32,11 +32,8 @@ p, input, textarea {
     align-items: left;
     display: block;
 }
-li {
-    display: inherit;
-    font-size: inherit;
-} 
-ul.main-nav {
+
+ul.main-nav{
     display: flex;
     list-style: none;
     padding-right: 0;
@@ -68,10 +65,10 @@ ul.bottom-nav {
     left: auto;
     right: 0;
 }
-li.main-nav {
-    margin: 10px; 
+li {
+    margin: 10px;
     color: var(--light-color);
-    font-size: 22px
+    font-size: 22px;
 }
 nav.header {
     height: 100px; 
