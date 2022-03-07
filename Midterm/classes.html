@@ -117,7 +117,7 @@
         </style>
         
     </head>
-    <body>
+    <body onload="loadLogin()">
         <button onclick="goTop()" id="BacktoTop" title="Go to top">Top</button>
         <script
         src="https://code.jquery.com/jquery-3.6.0.js"
@@ -149,11 +149,22 @@
               }
               })
             })
+            
+            function loadLogin() {
+                alert(localStorage.getItem("login"));
+                document.getElementById("user").innerHTML = localStorage.getItem("login");
+            };
         </script>
         <nav class="header">
             <a href="index.html">
                 <img src="images/cat_logo.png" alt="Wildcats logo" class = "logo">
             </a>
+            <div class="profile" style="border:solid 1px #fff; float:left;
+                 text-align:center; padding:5px;" id="prof">
+                <a href=parent-portal.html style="color: white;"><i id=user>Login</i>
+                </a>
+                <br>
+            </div>
             <ul class = "main-nav">
                 <a href="index.html"><li class = "main-nav">Home</li></a>
                 <a href="about-us.html"><li class = "main-nav">About</li></a>

@@ -181,7 +181,6 @@ a {text-decoration: none;}
 }
 
 .profile {
-    visibility: none;
     position: absolute;
     right:10px;
     top:5px;

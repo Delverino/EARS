@@ -48,7 +48,7 @@
             });
         </script>
     </head>
-    <body>
+    <body onload="loadLogin()">
         <button onclick="goTop()" id="BacktoTop" title="Go to top">Top</button>
         <script
         src="https://code.jquery.com/jquery-3.6.0.js"
@@ -85,7 +85,8 @@
             <a href="index.html">
                 <img src="images/cat_logo.png" alt="Wildcats logo" class = "logo">
             </a>
-            <div class="profile" style="border:solid 1px #fff; float:left; text-align:center; padding:5px;" id="prof">
+            <div class="profile" style="border:solid 1px #fff; float:left;
+                 text-align:center; padding:5px;" id="prof">
                 <a href=parent-portal.html style="color: white;"><i id=user>Login</i>
                 </a>
                 <br>
@@ -154,12 +155,14 @@
             </ul>
         </div>
         <script language = "javascript">
+            document.getElementById("user").innerHTML = getComputedStyle(document.documentElement).getPropertyValue('--login');
             btn = document.getElementById("login");
             btn.onclick = function() {
                 username = document.getElementById("the_user").value;
                 password = document.getElementById("the_pass").value;
                 if(validateEmail(username)) {
                     alert("You have logged in successfully!");
+                    localStorage.setItem("login", username);
                     document.getElementById("user").innerHTML = username;
                     document.getElementById("prof").style.visibility = "visible";
                 }
@@ -174,6 +177,10 @@
                 alert("You have entered an invalid email address!");
                 return (false);
             }
+            
+            function loadLogin() {
+                document.getElementById("user").innerHTML = localStorage.getItem("login");
+            };
         </script>
     </body>
 </html>
