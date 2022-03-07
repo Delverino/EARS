@@ -77,7 +77,9 @@
             })
             
             function loadLogin() {
-                document.getElementById("user").innerHTML = localStorage.getItem("login");
+                if(localStorage.getItem("login") != null) {
+                    document.getElementById("user").innerHTML = localStorage.getItem("login");
+                }
             };
         </script>
     </head>

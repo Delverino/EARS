@@ -444,7 +444,9 @@
             buttons[i].addEventListener("click", buttonPress);
           }
           
-          document.getElementById("user").innerHTML = localStorage.getItem("login");
+          if(localStorage.getItem("login") != null) {
+              document.getElementById("user").innerHTML = localStorage.getItem("login");
+          }
         }
         
         function buttonPress() {
