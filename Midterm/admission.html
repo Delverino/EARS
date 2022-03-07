@@ -41,12 +41,23 @@
         </style>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
         <script> 
         $(document).ready(function(){
             $(".question").click(function(){
                 $(this).next('.answer').slideToggle("slow");
             });
         });
+        $(document).ready(function(){
+            $(".dropbtn").click(function(){
+            $(myDropdown).toggle(100);
+            });
+            $(window).click(function(e){
+            if (!e.target.matches('.dropbtn')) {
+                $(myDropdown).hide(100);
+            }
+            })
+        })
         </script>
 
         <title>Admission</title>
@@ -70,6 +81,21 @@
                 <a href="parent-portal.html"><li class = "main-nav">Parents</li></a>
                 <a href="activities.html"><li class = "main-nav">Activities</li></a>
                 <a href="classes.html"><li class = "main-nav">Classes</li></a>
+                <li>        
+                    <div class="dropdown"> 
+                        <button class="dropbtn" onclick="myFunction()">Menu
+                        </button>
+                        <div class="dropdown-content" id="myDropdown">
+                            <a href="index.html">Home</a>
+                            <a href="about-us.html">About</a>
+                            <a href="admission.html">Admission</a>
+                            <a href="news.html">News</a>
+                            <a href="parent-portal.html">Parents</a>
+                            <a href="activities.html">Activities</a>
+                            <a href="classes.html">Classes</a>
+                        </div>
+                    </div> 
+                </li>
             </ul>
         </nav> 
 
