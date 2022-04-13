@@ -10,27 +10,20 @@
     </head>
 
 
-
     <body>
         <ul>
-            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="index.html">Home</a></li>
         </ul>
 
+        <div class = "text-center"> 
+            <h1>Thank you</h1> <br>
+            <div class = "message">
+                <?php
+                echo "You have successfully submitted the form!";
+                ?>
+            </div>
 
-
-
-
-
-
-
-
-
-        <footer>
-               <p>
-                © EARS
-               </p> 
-        </footer>
-
-
+        </div>
     </body>
- </html>
+
+</html>
