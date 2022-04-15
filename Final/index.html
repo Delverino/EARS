@@ -7,6 +7,60 @@
         <title>Would You Rather | Virtual Frog</title>
         <link rel="stylesheet" href="style.css">
         <link rel="icon" href="images/icon.png" type="image/png">
+        <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+        <style>
+            #speech-bubble{
+                background: white;
+                font-size: 60px;
+                border-radius: 20px;
+                border: solid 3px black;
+                padding: 20px;
+                font-size: 60px;
+            }
+            .container {
+                position: relative;
+                width: 350px;
+            }
+            #frog-body{
+                display: block;
+                width: inherit;
+                height: auto;
+                transition: .5s ease;
+                backface-visibility: hidden;
+            }
+            #frog-mouth{
+                position: absolute;
+                width: inherit;
+                top: 50%;
+                left: 50%;
+                text-align: center;
+            }
+        </style>
+
+        <script>
+            let lettersPerAnim = 5;
+            let textFrequency = 40
+            $(document).ready(function(){
+                let question = "Would you rather go to the sun or a black hole?";
+                let process_question = function(q){
+                    console.log(q.length)
+                    for(let i = 0; i < q.length; i++){
+                        setTimeout(
+                            function(){
+                                $("#speech-bubble").html(q.substring(0,i+1));
+                                if(i%(lettersPerAnim*2) == 0 || i+1 == q.length){
+                                    $("#frog-mouth").show(0);
+                                } else if (i%lettersPerAnim == 0) {
+                                    $("#frog-mouth").hide(0); 
+                                }
+                            }, 
+                        i*textFrequency)
+                        
+                    }
+                };
+                process_question(question);
+            });
+        </script>
     </head>
 
 
@@ -16,8 +70,10 @@
             <li><a href="contact.html">Contact Us</a></li>
         </ul>
 
-
-
+        <div id="speech-bubble">Would you rather die living or live dying?</div>
+        <a class="container" title="Frog Cartoon Picture from https://clipartmag.com/frog-cartoon-picture">
+            <img src="images/frog-body.png" id="frog-body" />
+            <img src="images/frog-mouth.png" id="frog-mouth"/></a>
 
 
 
