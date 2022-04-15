@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta keyword="Virtual Pet, Frog, Would You Rather, Game">
+        <title>Would You Rather | Virtual Frog</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="images/icon.png" type="image/png">
+
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+    </head>
+
+
+    <body>
+        <ul>
+            <li><a href="index.html">Back</a></li>
+        </ul>
+        <div class="text-center">
+            <h1>Contact Us</h1> <br>
+            
+            <form onsubmit="return validation()" action="contact.php" method='get'>
+
+                <label>Name: </label><input type = "text" name = 'user' ><br/>
+                <br/>
+    
+                <label>Email: </label><input type = "text" name = 'email' ><br/>
+                <br/>
+                <br>
+                
+                <label>Enter Your Message: <br> </label>
+                <br>
+                <textarea id = "area" name="message" placeholder="Tell us about your experience..." rows="10" cols="50"></textarea>
+                <br />
+                <br />
+                <input type = "submit" value = "Submit">
+    
+            </form>
+          
+        </div>
+
+        <script lang="javascript">
+
+            function invalid_email() {
+                var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                return (!(regex.test($("input[name='email']").val())));
+            }
+
+            function validation() {
+                var fail = false;
+                if ($("input[name='user']").val() == "") {
+                    fail = true;
+                    $("input[name='user']").focus();
+                    alert("Please enter your name");
+                }
+
+                if (invalid_email()) {
+                    fail = true;
+                    $("input[name='email']").focus();
+                    alert("Please enter a valid email address");
+                }
+
+                if ($("#area").val()== "") {
+                    fail = true;
+                    $("input[name='message']").focus();
+                    alert("Empty message :(");
+                }
+
+                return !fail;
+            }
+
+        </script> 
+
+
+        <footer>
+            <p>
+             © EARS
+            </p> 
+        </footer>
+
+    </body>
+ </html>
