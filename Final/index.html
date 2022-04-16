@@ -19,30 +19,6 @@
                 margin: 20px;
             }
         </style>
-        <script>
-            let lettersPerAnim = 5;
-            let textFrequency = 40
-            $(document).ready(function(){
-                let question = "Would you rather go to the sun or a black hole?";
-                let process_question = function(q){
-                    console.log(q.length)
-                    for(let i = 0; i < q.length; i++){
-                        setTimeout(
-                            function(){
-                                $("#speech-bubble").html(q.substring(0,i+1));
-                                if(i%(lettersPerAnim*2) == 0 || i+1 == q.length){
-                                    $("#frog-mouth").show(0);
-                                } else if (i%lettersPerAnim == 0) {
-                                    $("#frog-mouth").hide(0); 
-                                }
-                            }, 
-                        i*textFrequency)
-                        
-                    }
-                };
-                process_question(question);
-            });
-        </script>
     </head>
 
 
