@@ -14,12 +14,16 @@
                 font-size: 60px;
                 border-radius: 20px;
                 border: solid 3px black;
+                width:330px;
                 padding: 20px;
-                font-size: 60px;
+                font-size: 30px;
+                margin-left:auto;
+                margin-right:auto;
+                margin-top:100px;
             }
             .container {
                 position: relative;
-                width: 350px;
+                width: 250px;
             }
             #frog-body{
                 display: block;
@@ -27,13 +31,12 @@
                 height: auto;
                 transition: .5s ease;
                 backface-visibility: hidden;
+                margin-left:auto;
+                margin-right:auto;
+                margin-top:40px;
             }
-            #frog-mouth{
-                position: absolute;
-                width: inherit;
-                top: 50%;
-                left: 50%;
-                text-align: center;
+            #hidden{
+                color: white;
             }
         </style>
 
@@ -47,11 +50,12 @@
                     for(let i = 0; i < q.length; i++){
                         setTimeout(
                             function(){
-                                $("#speech-bubble").html(q.substring(0,i+1));
+                                $("#shown").html(q.substring(0,i+1));
+                                $("#hidden").html(q.substring(i+1,q.length));
                                 if(i%(lettersPerAnim*2) == 0 || i+1 == q.length){
-                                    $("#frog-mouth").show(0);
+                                    $("#frog-body").attr("src", "images/frog-body-with-mouth.png");
                                 } else if (i%lettersPerAnim == 0) {
-                                    $("#frog-mouth").hide(0); 
+                                    $("#frog-body").attr("src", "images/frog-body.png");
                                 }
                             }, 
                         i*textFrequency)
@@ -70,10 +74,9 @@
             <li><a href="contact.html">Contact Us</a></li>
         </ul>
 
-        <div id="speech-bubble">Would you rather die living or live dying?</div>
+        <div id="speech-bubble"><span id="shown">would you rasdfasdfasdfdsaat</span><span id="hidden">her asdfasdf asdf</span></div>
         <a class="container" title="Frog Cartoon Picture from https://clipartmag.com/frog-cartoon-picture">
-            <img src="images/frog-body.png" id="frog-body" />
-            <img src="images/frog-mouth.png" id="frog-mouth"/></a>
+            <img src="images/frog-body.png" id="frog-body" /></a>
 
 
 
