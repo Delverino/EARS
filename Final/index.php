@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<?php require 'test.php' ?>
+<?php require 'database.php' ?>
 
 <html lang="en" dir="ltr">
     <head>
