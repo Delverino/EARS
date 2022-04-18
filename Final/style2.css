@@ -1,0 +1,121 @@
+#speech-bubble{
+    background: white;
+    font-size: 60px;
+    border-radius: 20px;
+    border: solid 3px black;
+    width:330px;
+    padding: 20px;
+    font-size: 30px;
+    margin-left:auto;
+    margin-right:auto;
+    transition: color 0.2s linear;
+    text-align: left;
+    position: relative;
+}
+.container {
+    position: relative;
+    width: 250px;
+}
+#frog-body{
+    display: block;
+    width: inherit;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:40px;
+}
+#hidden{
+    color: white;
+}
+
+.prompt-wrapper {
+  text-align: center;
+  vertical-align: middle;
+  margin-top:100px;
+}
+
+.prompt {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+input[type=submit] {
+  width: 100px;
+  padding: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: 18px !important;
+  border-radius: 10px;
+  border: none;
+  background-color: #16631f;
+  transition-duration: 0.4s;
+  color: white;
+}
+
+
+input[type=submit]:hover { 
+  background-color: #e6ca2e; 
+  color: #16631f; 
+  font-weight: bold;
+}
+
+input[type=submit]:active { 
+  background-color: white; 
+  color: #16631f;
+  font-weight: bold;
+ }
+ 
+ #highlight {
+   background-color: #f5e487;
+ }
+ 
+ #op1 { display: none; }
+ #op2 { display: none; }
+ 
+
+ #next-prompt { 
+   visibility: hidden;
+   position: absolute;
+   opacity: 0;
+   width: 170px;
+   transition-duration: 0.4s;
+   top: 50%;  
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  vertical-align: middle;
+  padding: 10px;
+  font-size: 18px !important;
+  border-radius: 10px;
+  border: none;
+  background-color: #e6ca2e;
+  transition-duration: 0.4s;
+  color: #16631f;
+   
+ }
+
+ #next-prompt:hover { 
+   background-color: #16631f; 
+   color: #e6ca2e; 
+   font-weight: bold;
+   cursor: pointer;
+ }
+ 
+ #next-prompt:active { 
+   background-color: white; 
+   color: #16631f;
+   font-weight: bold;
+  }
+ 
+ #pwrap {
+   position: absolute;
+   height: 100px;
+   vertical-align: middle;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+ }
+ 
