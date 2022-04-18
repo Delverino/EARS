@@ -78,5 +78,41 @@ input[type=submit]{
 }
 
 
+.share-buttons {
+    display: flex;
+    flex-direction: row;
+    padding: 16px;
+    width: 100%;
+    justify-content: center;
+    position: fixed;
+}
 
+.share-buttons a {
+    margin: 0 32px;
+    transition: 500ms;
+}
+
+.share-buttons a i {
+    font-size: 32px;
+}
+
+.share-buttons a:hover {
+    transform: scale(1.2);
+}
+
+.share-buttons .fa-facebook {
+    color: #3b5998;
+}
+.share-buttons .fa-twitter {
+    color: #1da1f2;
+}
+.share-buttons .fa-pinterest {
+    color: #bd081c;
+}
+.share-buttons .fa-linkedin {
+    color: #0077b5;
+}
+.share-buttons .fa-whatsapp {
+    color: #25d366;
+}
 
