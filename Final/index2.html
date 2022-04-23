@@ -40,8 +40,16 @@
             }
             #hidden{
                 color: white;
+
             }
-            
+            /* #contact{
+              background-color: white;
+            } */
+            #contact{
+                background-color: white;
+                background-clip: padding-box;
+            }
+
             .prompt-wrapper {
               text-align: center;
               vertical-align: middle;
@@ -155,7 +163,9 @@
             var option1;
             var option2;
             var ready = false;
-      
+
+
+
             async function getPrompt()
             {
               const response = await fetch(API_URL);
@@ -307,7 +317,7 @@
 
     <body>
         <ul>
-            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="contact.html" id="contact">Contact Us</a></li>
         </ul>
         
         <div class="share-buttons">
