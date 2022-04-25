@@ -80,7 +80,7 @@
               console.log("option 1: " + option1);
               console.log("option 2: " + option2);
           
-              
+              setlinks(q);
               froggyTalk(q);
               
             }
@@ -232,6 +232,43 @@
                 .catch(error => console.log("Caught exception: " + error));
             }
             
+            function setlinks(prompt) {
+                const facebookBtn = document.getElementById("facebook");
+                const twitterBtn = document.getElementById("twitter");
+                const pinterestBtn = document.getElementById("pinterest");
+                const linkedinBtn = document.getElementById("linkedin");
+                const whatsappBtn = document.getElementById("whatsapp");
+                
+                const postImg = encodeURI("images/frog-body-with-mouth.png".src);
+                let postUrl = encodeURI(document.location.href);
+                let postTitle = encodeURI(prompt);
+                
+                facebookBtn.setAttribute(
+                    "href",
+                    `https://www.facebook.com/sharer.php?u=${postUrl}`
+                );
+                
+                twitterBtn.setAttribute(
+                    "href",
+                    `https://twitter.com/share?url=${postUrl}&text=${postTitle}`
+                );
+                
+                pinterestBtn.setAttribute(
+                    "href",
+                    `https://pinterest.com/pin/create/bookmarklet/?media=${postImg}&url=${postUrl}&description=${postTitle}`
+                );
+                
+                linkedinBtn.setAttribute(
+                    "href",
+                    `https://www.linkedin.com/shareArticle?url=${postUrl}&title=${postTitle}`
+                );
+                
+                whatsappBtn.setAttribute(
+                    "href",
+                    `https://wa.me/?text=${postTitle} ${postUrl}`
+                );
+            }
+            
             /*********/
     
         </script>
@@ -243,6 +280,24 @@
         <ul>
             <li><a href="contact.html">Contact Us</a></li>
         </ul>
+        
+        <div class="share-buttons">
+            <a href="#" id="facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" id="twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" id="pinterest">
+                <i class="fab fa-pinterest"></i>
+            </a>
+            <a href="#" id="linkedin">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="#" id="whatsapp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
         
      <form action="" method="post">
         <input type="hidden" name="prompt" id="prompt">
@@ -257,18 +312,10 @@
     
           </form><br>
 
-
-
-
-
-
-
         <footer>
                <p>
                 © EARS
                </p> 
         </footer>
-
-
     </body>
  </html>

@@ -210,7 +210,7 @@
               console.log("option 1: " + option1);
               console.log("option 2: " + option2);
           
-              
+              setlinks(q);
               froggyTalk(q);
               
             }
@@ -308,7 +308,42 @@
                 .catch(error => console.log("Caught exception: " + error));
             }
             
-            /*********/
+            function setlinks(prompt) {
+                const facebookBtn = document.getElementById("facebook");
+                const twitterBtn = document.getElementById("twitter");
+                const pinterestBtn = document.getElementById("pinterest");
+                const linkedinBtn = document.getElementById("linkedin");
+                const whatsappBtn = document.getElementById("whatsapp");
+                
+                const postImg = encodeURI("images/frog-body-with-mouth.png".src);
+                let postUrl = encodeURI(document.location.href);
+                let postTitle = encodeURI(prompt);
+                
+                facebookBtn.setAttribute(
+                    "href",
+                    `https://www.facebook.com/sharer.php?u=${postUrl}`
+                );
+                
+                twitterBtn.setAttribute(
+                    "href",
+                    `https://twitter.com/share?url=${postUrl}&text=${postTitle}`
+                );
+                
+                pinterestBtn.setAttribute(
+                    "href",
+                    `https://pinterest.com/pin/create/bookmarklet/?media=${postImg}&url=${postUrl}&description=${postTitle}`
+                );
+                
+                linkedinBtn.setAttribute(
+                    "href",
+                    `https://www.linkedin.com/shareArticle?url=${postUrl}&title=${postTitle}`
+                );
+                
+                whatsappBtn.setAttribute(
+                    "href",
+                    `https://wa.me/?text=${postTitle} ${postUrl}`
+                );
+            }
     
         </script>
     </head>
@@ -360,44 +395,44 @@
         </footer>
 
         <script>
-            links();
-            
-            function links() {
-                const facebookBtn = document.getElementById("facebook");
-                const twitterBtn = document.getElementById("twitter");
-                const pinterestBtn = document.getElementById("pinterest");
-                const linkedinBtn = document.getElementById("linkedin");
-                const whatsappBtn = document.getElementById("whatsapp");
-                
-                const postImg = encodeURI("images/frog-body-with-mouth.png".src);
-                let postUrl = encodeURI(document.location.href);
-                let postTitle = encodeURI("Check out this great new game! ");
-                
-                facebookBtn.setAttribute(
-                    "href",
-                    `https://www.facebook.com/sharer.php?u=${postUrl}`
-                );
-                
-                twitterBtn.setAttribute(
-                    "href",
-                    `https://twitter.com/share?url=${postUrl}&text=${postTitle}`
-                );
-                
-                pinterestBtn.setAttribute(
-                    "href",
-                    `https://pinterest.com/pin/create/bookmarklet/?media=${postImg}&url=${postUrl}&description=${postTitle}`
-                );
-                
-                linkedinBtn.setAttribute(
-                    "href",
-                    `https://www.linkedin.com/shareArticle?url=${postUrl}&title=${postTitle}`
-                );
-                
-                whatsappBtn.setAttribute(
-                    "href",
-                    `https://wa.me/?text=${postTitle} ${postUrl}`
-                );
-            }
+            // links();
+            // 
+            // function links() {
+            //     const facebookBtn = document.getElementById("facebook");
+            //     const twitterBtn = document.getElementById("twitter");
+            //     const pinterestBtn = document.getElementById("pinterest");
+            //     const linkedinBtn = document.getElementById("linkedin");
+            //     const whatsappBtn = document.getElementById("whatsapp");
+            // 
+            //     const postImg = encodeURI("images/frog-body-with-mouth.png".src);
+            //     let postUrl = encodeURI(document.location.href);
+            //     let postTitle = encodeURI("Check out this great new game! ");
+            // 
+            //     facebookBtn.setAttribute(
+            //         "href",
+            //         `https://www.facebook.com/sharer.php?u=${postUrl}`
+            //     );
+            // 
+            //     twitterBtn.setAttribute(
+            //         "href",
+            //         `https://twitter.com/share?url=${postUrl}&text=${postTitle}`
+            //     );
+            // 
+            //     pinterestBtn.setAttribute(
+            //         "href",
+            //         `https://pinterest.com/pin/create/bookmarklet/?media=${postImg}&url=${postUrl}&description=${postTitle}`
+            //     );
+            // 
+            //     linkedinBtn.setAttribute(
+            //         "href",
+            //         `https://www.linkedin.com/shareArticle?url=${postUrl}&title=${postTitle}`
+            //     );
+            // 
+            //     whatsappBtn.setAttribute(
+            //         "href",
+            //         `https://wa.me/?text=${postTitle} ${postUrl}`
+            //     );
+            // }
         </script>
     </body>
  </html>
