@@ -40,16 +40,67 @@ if(isset($_POST['prompt'])){ //check if form was submitted
   
   $row = $result->fetch_assoc();
   
-  $stat1 = ($row['option1'] == 1) ? "1 person" : (($row['option1'] == 0) ? "no one" : "{$row['option1']} people");
-  $stat2 = ($row['option2'] == 1) ? "1 person" : (($row['option2'] == 0) ? "no one" : "{$row['option2']} people");
+  // $stat1 = ($row['option1'] == 1) ? "1 person" : (($row['option1'] == 0) ? "no one" : "{$row['option1']} people");
+  // $stat2 = ($row['option2'] == 1) ? "1 person" : (($row['option2'] == 0) ? "no one" : "{$row['option2']} people");
+  // 
+  // if ($selectedOption == "option1") {
+  //   $message = "Interesting - {$stat1} agreed with you, while {$stat2} disagreed and chose the other option.";
+  //   $updatedVal = $row['option1'] + 1;
+  // } else {
+  //   $message = "Interesting - {$stat2} agreed with you, while {$stat1} disagreed and chose the other option.";
+  //   $updatedVal = $row['option2'] + 1;
+  // }
+  
+    /* NEW STUFF */
+    
 
+    function randFromArray($a) {
+        $index = floor(random_int(0, count($a) - 1));
+        return $a[$index];
+    }
+    
+    function respond($agreed, $disagreed)
+    {
+        // console.log(agreed);
+        // console.log(disagreed);
+        $low_sas = array("That\'s not what I would have picked...",
+                       "Interesting...", "Really??", "I guess that was an option.",
+                       "I can\'t believe it!", "Huh.", "I think you\'d like my friend, she\'s also a contrarian.",
+                       "You just have to go and be original, don\'t you?");
+        $high_sas = array("Have you ever tried being original?",
+                        "You and everybody else...",
+                        "That\'s what I picked!",
+                        "Hey me too!", "Good one.", "That\'s what everybody says.");
+                        
+        if(($agreed + $disagreed) == 0) {
+            $ratio = 1;
+        } else {
+          $ratio = $agreed / ($agreed + $disagreed);
+        }
+        $percent = round($ratio * 100);
+        $response = $percent . "% of people agreed with you.";
+        if($percent > 60){
+          $response = randFromArray($high_sas) . " " . $response;
+        } else if ($percent < 40) {
+          $response = randFromArray($low_sas) . " " . $response;
+        }
+        return $response;
+    }
+    
   if ($selectedOption == "option1") {
-    $message = "Interesting - {$stat1} agreed with you, while {$stat2} disagreed and chose the other option.";
+    $message = respond($row['option1'], $row['option2']);
     $updatedVal = $row['option1'] + 1;
   } else {
-    $message = "Interesting - {$stat2} agreed with you, while {$stat1} disagreed and chose the other option.";
+    $message = respond($row['option2'], $row['option1']);
     $updatedVal = $row['option2'] + 1;
   }
+  
+  
+  
+
+  
+    /*****/
+  
   
   $sql = "UPDATE prompts SET $selectedOption = $updatedVal WHERE prompt = ?";
   

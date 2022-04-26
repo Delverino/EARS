@@ -250,6 +250,7 @@
           
               
               froggyTalk(q);
+            
               
             }
             
@@ -281,12 +282,12 @@
               
             }
             
-            function eventListener()
+            function eventListener(wyr_or_joke)
             {
-              
+              console.log(wyr_or_joke);
               if (!ready) {
-                window.setTimeout(eventListener, 100);
-              } else {
+                window.setTimeout(eventListener(wyr_or_joke), 100);
+              } else if (wyr_or_joke != "joke"){
                 button1 = document.getElementById("op1");
                 button2 = document.getElementById("op2");
                 
@@ -340,7 +341,7 @@
               ready = false;
               getPrompt((wyr_or_joke == 'joke') ? JOKE_URL : API_URL)
                 .then(prompt => printPrompt(prompt, wyr_or_joke))
-                .then(eventListener)
+                .then(e => eventListener(wyr_or_joke))
                 .catch(error => console.log("Caught exception: " + error));
             }
             
