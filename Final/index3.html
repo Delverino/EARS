@@ -97,7 +97,7 @@
              #speech-bubble:hover {
                color: rgba(0, 0, 0, 0.2);
              }
-             #next-prompt { 
+             #next-prompt{ 
                visibility: hidden;
                position: absolute;
                opacity: 0;
@@ -126,6 +126,7 @@
 
              #joke {
                width:150px;
+               visibility: hidden;
              }
              
              #next-prompt:hover { 
@@ -168,6 +169,7 @@
             var option1;
             var option2;
             var ready = false;
+            var called = false;
 
             var low_sas = ["That's not what I would have picked...",
                            "Interesting...", "Really??", "I guess that was an option.",
@@ -249,12 +251,12 @@
               }
           
               
-              froggyTalk(q);
+              froggyTalk(q, wyr_or_joke);
             
               
             }
             
-            function froggyTalk(q)
+            function froggyTalk(q, wyr_or_joke)
             {
               
               const lettersPerAnim = 5;
@@ -272,6 +274,7 @@
                             
                           if (i == q.length - 1) {
                             ready = true;
+                            eventListener(wyr_or_joke)
                           }
                       }, 
                   i*textFrequency
@@ -284,10 +287,9 @@
             
             function eventListener(wyr_or_joke)
             {
-              console.log(wyr_or_joke);
-              if (!ready) {
-                window.setTimeout(eventListener(wyr_or_joke), 100);
-              } else if (wyr_or_joke != "joke"){
+              
+              if (wyr_or_joke == "wyr"){
+                called = false;
                 button1 = document.getElementById("op1");
                 button2 = document.getElementById("op2");
                 
@@ -298,7 +300,10 @@
                 button2.addEventListener("mouseover", highlightOption);
                 button1.addEventListener("mouseout", unhighlightOption);
                 button2.addEventListener("mouseout", unhighlightOption);
-              }
+              } 
+              console.log("about to change attr")
+              $("#joke").show();
+              $("#joke").css("visibility", "inherit");
               
           
             }
@@ -336,12 +341,12 @@
             
             function newPrompt(wyr_or_joke) 
             {
+              ready = false;
+              $("#joke").hide();
               $("#op1").hide();
               $("#op2").hide();
-              ready = false;
               getPrompt((wyr_or_joke == 'joke') ? JOKE_URL : API_URL)
                 .then(prompt => printPrompt(prompt, wyr_or_joke))
-                .then(e => eventListener(wyr_or_joke))
                 .catch(error => console.log("Caught exception: " + error));
             }
             
