@@ -282,19 +282,19 @@
         </ul>
         
         <div class="share-buttons">
-            <a href="#" id="facebook">
+            <a href="#" target="_blank" id="facebook">
                 <i class="fab fa-facebook"></i>
             </a>
-            <a href="#" id="twitter">
+            <a href="#" target="_blank" id="twitter">
                 <i class="fab fa-twitter"></i>
             </a>
-            <a href="#" id="pinterest">
+            <a href="#" target="_blank" id="pinterest">
                 <i class="fab fa-pinterest"></i>
             </a>
-            <a href="#" id="linkedin">
+            <a href="#" target="_blank" id="linkedin">
                 <i class="fab fa-linkedin"></i>
             </a>
-            <a href="#" id="whatsapp">
+            <a href="#" target="_blank" id="whatsapp">
                 <i class="fab fa-whatsapp"></i>
             </a>
         </div>

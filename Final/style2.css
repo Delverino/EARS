@@ -119,3 +119,9 @@ input[type=submit]:active {
   transform: translate(-50%, -50%);
  }
  
+ @media (max-width: 785px) {
+     .prompt {
+         display: inherit;
+     }
+ }
+ 
