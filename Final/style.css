@@ -10,8 +10,8 @@ body, html {
 }
 
 footer {
-    text-align: center;
-    padding: 3px;
+    text-align: right;
+    padding: -3px;
     color: black;
     font-family: sans-serif; 
     position: absolute;
@@ -20,7 +20,7 @@ footer {
     width: 100%;
     height: 3em;
     background:transparent;
-}
+/* padding-right: 45px; */}
 
 
 .text-center {

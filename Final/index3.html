@@ -61,7 +61,7 @@
               vertical-align: middle;
             }
             
-            input[type=submit], #joke {
+            input[type=submit], #joke, #joke2 {
               width: 100px;
               padding: 10px;
               margin-left: 50px;
@@ -75,13 +75,13 @@
             padding: 12px;}
             
             
-            input[type=submit]:hover, #joke:hover { 
+            input[type=submit]:hover, #joke:hover, #joke2:hover { 
               background-color: #e6ca2e; 
               color: #16631f; 
               font-weight: bold;
             }
             
-            input[type=submit]:active, #joke:active{ 
+            input[type=submit]:active, #joke:active, #joke2:active{ 
               background-color: white; 
               color: #16631f;
               font-weight: bold;
@@ -124,10 +124,19 @@
                
              }
 
-             #joke {
+             #joke, #joke2 {
                width:150px;
                visibility: hidden;
-             }
+               margin-left:auto;
+               margin-right:auto;
+               display: block;
+               margin-top: 60px;
+              }
+              #joke2{
+                width:170px;
+                margin-top: 20px;
+
+              }
              
              #next-prompt:hover { 
                background-color: #16631f; 
@@ -161,7 +170,7 @@
             
 
             const API_URL = "https://api.aakhilv.me/fun/wyr";
-            const JOKE_URL = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,racist,sexist,explicit&type=single"
+            const JOKE_URL = "https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,racist,sexist,explicit,political,religious&type=single"
             const EDGECASE_1 = "Would you have an Alien friend or a Superhero friend?";
             const EDGECASE_2 = "If you had to give up one thing for the rest of your life, would it be brushing your hair or brushing your teeth?";
             const EDGECASE_3 = "Would you feel worse if no one showed up to your wedding or to your funeral?";
@@ -304,6 +313,8 @@
               console.log("about to change attr")
               $("#joke").show();
               $("#joke").css("visibility", "inherit");
+              $("#joke2").show();
+              $("#joke2").css("visibility", "inherit");
               
           
             }
@@ -343,6 +354,7 @@
             {
               ready = false;
               $("#joke").hide();
+              $("#joke2").hide();
               $("#op1").hide();
               $("#op2").hide();
               getPrompt((wyr_or_joke == 'joke') ? JOKE_URL : API_URL)
@@ -391,7 +403,8 @@
         <a class="container" title="Frog Cartoon Picture from https://clipartmag.com/frog-cartoon-picture">
             <img src="images/frog-body.png" id="frog-body" /></a>
     <!-- TODO currently after you tell a joke, if you scroll over the "option 1 option 2 buttons it breaks" -->
-            <div class="prompt"><input type="button" class="prompt" id="joke" onclick="newPrompt('joke')" value="Tell me a joke!"></div>
+            <input type="button" class="prompt" id="joke" onclick="newPrompt('joke')" value="Tell me a joke!">
+            <input type="button" class="prompt" id="joke2" onclick="newPrompt('wyr')" value="Would you rather">
             </form><br>
             <!-- <iframe name="content" class="iframe" id="iframe"></iframe><br><br> -->
 
