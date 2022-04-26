@@ -1,11 +1,15 @@
 <!DOCTYPE html>
+
+<?php require 'test.php' ?>
+
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta keyword="Virtual Pet, Frog, Would You Rather, Game">
         <title>Would You Rather | Virtual Frog</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style10.css">
+        <link rel="stylesheet" href="style20.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
         <link rel="icon" href="images/icon.png" type="image/png">
         <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
@@ -169,94 +173,93 @@
             var option1;
             var option2;
             var ready = false;
-            var called = false;
-
-            var low_sas = ["That's not what I would have picked...",
-                           "Interesting...", "Really??", "I guess that was an option.",
-                           "I can't believe it!", "Huh.", "I think you'd like my friend, she's also a contrarian.",
-                           "You just have to go and be original, don't you?"]
-            var high_sas = ["Have you ever tried being original?",
-                            "You and everybody else...",
-                            "That's what I picked!",
-                            "Hey me too!", "Good one.", "That's what everybody says."]
-
-            function randFromArray(a){
-                index = Math.floor(Math.random() * (a.length));
-                return a[index];
+            
+            <?php 
+            
+            if(isset($_POST['prompt'])) {
+              echo "ready = true; 
+                    $('#op1').hide(); 
+                    $('#op2').hide(); 
+                    var donePrint = false;
+                    froggyTalk('{$message}', false);"; 
             }
-
-            function respond(agreed, disagreed){
-                console.log(agreed);
-                console.log(disagreed);
-                if((agreed + disagreed) == 0){
-                    ratio = agreed / (agreed + disagreed);
-                    ratio = 1;
-                }
-                percent = Math.round(ratio * 100);
-                response = percent + "% of people agreed with you.";
-                if(percent > 70){
-                  response = randFromArray(high_sas) + " " + response;
-                } else if (percent < 30){
-                  response = randFromArray(low_sas) + " " + response
-                }
-                return response;
+            
+            ?>
+            
+            /*** STUFF ***/
+            
+            window.onload = function() {
+            
+              links();
+              if (ready == false) {
+                newPrompt(false);
+              } else {
+                document.getElementById("next-prompt").value = "Next Prompt!";
+                finalButton();
+              }
+              
             }
-
-            async function getPrompt(URL)
+            
+            
+            function newPrompt(joke) 
             {
-              const response = await fetch(URL);
+              $("#joke").hide();
+              $("#op1").hide();
+              $("#op2").hide();
+              getPrompt(joke ? JOKE_URL : API_URL)
+                .then(prompt => printPrompt(prompt, joke))
+                .catch(error => console.log("Caught exception: " + error));
+            }
+
+            async function getPrompt(url)
+            {
+              const response = await fetch(url);
               prompt = await response.json();
               return prompt;
             }
             
-            function printPrompt(q, wyr_or_joke)
+            function printPrompt(q, isJoke)
             {
-              
-              document.getElementById("prompt").value = q;
-              if(wyr_or_joke == 'wyr'){
-
-                  q = JSON.stringify(q);
-                  q = q.slice(2, -2);
-                  
-                  wyr = "would you rather ";
-                  or = " or ";
-                  //info = { prompt: q; option1: "",  option1: ""};
-        
-                // most prompts are in the form "Would you rather [ option 1 ] or [ option 2 ]?"
-                // however there are annoyingly three exceptions which we need to account for
-                  if (q == EDGECASE_1) {
-                    option1 = "an Alien friend";
-                    option2 = "a Superhero friend";
-                  } else if (q == EDGECASE_2) {
-                    option1 = "brushing your hair";
-                    option2 = "brushing your teeth";
-                  } else if (q == EDGECASE_3) {
-                    option1 = "no one showed up to your wedding";
-                    option2 = "to your funeral";
-                  } else {
-                    start_op1 = q.toLowerCase().indexOf(wyr) + wyr.length;
-                    end_op1 = q.toLowerCase().indexOf(or);
-                    
-                    start_op2 = q.toLowerCase().indexOf(or) + or.length;
-                    end_op2 = q.length - 1;
-                    
-                    option1 = q.substring(start_op1, end_op1);
-                    option2 = q.substring(start_op2, end_op2);
-                  }
-                  
-                  console.log("option 1: " + option1);
-                  console.log("option 2: " + option2);
-              } else {
-                  q = q.joke;
+              if (isJoke) {
+                froggyTalk(q.joke, isJoke);
+                return;
               }
-          
+                  
+              document.getElementById("prompt").value = q;
+              q = JSON.stringify(q);
+              q = q.slice(2, -2);
               
-              froggyTalk(q, wyr_or_joke);
-            
+              wyr = "would you rather ";
+              or = " or ";
+    
+            // most prompts are in the form "Would you rather [ option 1 ] or [ option 2 ]?"
+            // however there are annoyingly three exceptions which we need to account for
+              if (q == EDGECASE_1) {
+                option1 = "an Alien friend";
+                option2 = "a Superhero friend";
+              } else if (q == EDGECASE_2) {
+                option1 = "brushing your hair";
+                option2 = "brushing your teeth";
+              } else if (q == EDGECASE_3) {
+                option1 = "no one showed up to your wedding";
+                option2 = "to your funeral";
+              } else {
+                start_op1 = q.toLowerCase().indexOf(wyr) + wyr.length;
+                end_op1 = q.toLowerCase().indexOf(or);
+                
+                start_op2 = q.toLowerCase().indexOf(or) + or.length;
+                end_op2 = q.length - 1;
+                
+                option1 = q.substring(start_op1, end_op1);
+                option2 = q.substring(start_op2, end_op2);
+              }
               
+              console.log("option 1: " + option1);
+              console.log("option 2: " + option2);
+              froggyTalk(q, isJoke);    
             }
             
-            function froggyTalk(q, wyr_or_joke)
+            function froggyTalk(q, isJoke)
             {
               
               const lettersPerAnim = 5;
@@ -274,7 +277,8 @@
                             
                           if (i == q.length - 1) {
                             ready = true;
-                            eventListener(wyr_or_joke)
+                            donePrint = true;
+                            eventListener(isJoke);
                           }
                       }, 
                   i*textFrequency
@@ -282,14 +286,12 @@
                 )
           
               }
-              
             }
             
-            function eventListener(wyr_or_joke)
+            function eventListener(isJoke)
             {
               
-              if (wyr_or_joke == "wyr"){
-                called = false;
+              if (!isJoke) {
                 button1 = document.getElementById("op1");
                 button2 = document.getElementById("op2");
                 
@@ -304,8 +306,7 @@
               console.log("about to change attr")
               $("#joke").show();
               $("#joke").css("visibility", "inherit");
-              
-          
+
             }
             
             function highlightOption()
@@ -336,19 +337,42 @@
               document.getElementById("shown").innerHTML = prompt;
             }
          	
-          
-            newPrompt('wyr');
-            
-            function newPrompt(wyr_or_joke) 
+            function finalButton()
             {
-              ready = false;
-              $("#joke").hide();
-              $("#op1").hide();
-              $("#op2").hide();
-              getPrompt((wyr_or_joke == 'joke') ? JOKE_URL : API_URL)
-                .then(prompt => printPrompt(prompt, wyr_or_joke))
-                .catch(error => console.log("Caught exception: " + error));
+              
+              if (!donePrint) {
+                console.log("here!");
+                window.setTimeout(finalButton, 100);
+              } else {
+                var bubble = document.getElementById("speech-bubble");
+                bubble.addEventListener('mouseover', bubbleHover);
+                bubble.addEventListener('mouseout', bubbleOut);
+              }
+              
             }
+            
+            function bubbleHover()
+            {
+              if (ready) {
+                this.style.color="rgba(0, 0, 0, 0.2)";
+                button = document.getElementById("next-prompt");
+                button.style.visibility = "visible";
+                button.style.opacity = 1;
+              } else {
+                this.style.color="black";
+              }
+            }
+            
+            function bubbleOut()
+            {
+              this.style.color="black";
+
+              button = document.getElementById("next-prompt");
+              button.style.visibility = "hidden";
+              button.style.opacity = 0;
+            }
+            
+        
             
             /*********/
     
@@ -385,13 +409,13 @@
         <!-- Display the question -->
         <div class="prompt-wrapper">
           <input class="prompt" id="op1" type="submit" name="option1" value="Option 1">
-          <div class="prompt" id="speech-bubble"><div id="pwrap"><input class="prompt" id="next-prompt" type="button" name="diffprompt" value="Different Prompt" onclick="newPrompt('wyr')"></div><span id="shown">Would you rather...</span><span id="hidden">her asdfasdf asdf</span></div>
+          <div class="prompt" id="speech-bubble"><div id="pwrap"><input class="prompt" id="next-prompt" type="button" name="diffprompt" value="Different Prompt" onclick="newPrompt(false)"></div><span id="shown">Would you rather...</span><span id="hidden">her asdfasdf asdf</span></div>
           <input class="prompt" id="op2" type="submit" name="option2" value="Option 2">
         </div>
         <a class="container" title="Frog Cartoon Picture from https://clipartmag.com/frog-cartoon-picture">
             <img src="images/frog-body.png" id="frog-body" /></a>
     <!-- TODO currently after you tell a joke, if you scroll over the "option 1 option 2 buttons it breaks" -->
-            <div class="prompt"><input type="button" class="prompt" id="joke" onclick="newPrompt('joke')" value="Tell me a joke!"></div>
+            <div class="prompt"><input type="button" class="prompt" id="joke" onclick="newPrompt(true)" value="Tell me a joke!"></div>
             </form><br>
             <!-- <iframe name="content" class="iframe" id="iframe"></iframe><br><br> -->
 
@@ -403,9 +427,9 @@
         </footer>
 
         <script>
-            links();
-            
-            function links() {
+
+            function links() 
+            {
                 const facebookBtn = document.getElementById("facebook");
                 const twitterBtn = document.getElementById("twitter");
                 const pinterestBtn = document.getElementById("pinterest");

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<?php require 'database.php' ?>
+<?php require 'test.php' ?>
 
 <html lang="en" dir="ltr">
     <head>
@@ -8,16 +8,165 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta keyword="Virtual Pet, Frog, Would You Rather, Game">
         <title>Would You Rather | Virtual Frog</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="style2.css">
+        <link rel="stylesheet" href="style10.css">
+        <link rel="stylesheet" href="style20.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
         <link rel="icon" href="images/icon.png" type="image/png">
         <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+        <style>
+            #speech-bubble{
+                background: white;
+                font-size: 60px;
+                border-radius: 20px;
+                border: solid 3px black;
+                width:330px;
+                padding: 20px;
+                font-size: 30px;
+                margin-left:auto;
+                margin-right:auto;
+                transition: color 0.2s linear;
+                text-align: left;
+                position: relative;
+            }
+            .container {
+                position: relative;
+                width: 250px;
+            }
+            #frog-body{
+                display: block;
+                width: inherit;
+                height: auto;
+                transition: .5s ease;
+                backface-visibility: hidden;
+                margin-left:auto;
+                margin-right:auto;
+                margin-top:40px;
+            }
+            #hidden{
+                color: white;
+
+            }
+            /* #contact{
+              background-color: white;
+            } */
+            #contact{
+                background-color: white;
+                background-clip: padding-box;
+            }
+
+            .prompt-wrapper {
+              text-align: center;
+              vertical-align: middle;
+              margin-top:100px;
+            }
+            
+            .prompt {
+              display: inline-block;
+              vertical-align: middle;
+            }
+            
+            input[type=submit], #joke {
+              width: 100px;
+              padding: 10px;
+              margin-left: 50px;
+              margin-right: 50px;
+              font-size: 18px !important;
+              border-radius: 10px;
+              border: none;
+              background-color: #16631f;
+              transition-duration: 0.4s;
+              color: white;
+              padding: 12px;
+            }
+            
+            
+            input[type=submit]:hover, #joke:hover { 
+              background-color: #e6ca2e; 
+              color: #16631f; 
+              font-weight: bold;
+            }
+            
+            input[type=submit]:active, #joke:active{ 
+              background-color: white; 
+              color: #16631f;
+              font-weight: bold;
+             }
+             
+             #highlight {
+               background-color: #f5e487;
+             }
+             
+             #op1 { display: none; }
+             #op2 { display: none; }
+             
+             #speech-bubble:hover {
+               color: rgba(0, 0, 0, 0.2);
+             }
+             #next-prompt{ 
+               visibility: hidden;
+               position: absolute;
+               opacity: 0;
+               width: 170px;
+               transition-duration: 0.4s;
+               top: 50%;  
+              left: 50%; 
+              transform: translate(-50%, -50%);
+              vertical-align: middle;
+              padding: 10px;
+              font-size: 18px !important;
+              border-radius: 10px;
+              border: none;
+              background-color: #e6ca2e;
+              transition-duration: 0.4s;
+              color: #16631f;
+               
+             }
+             #speech-bubble:hover #next-prompt {
+               /* display: block; */
+               visibility: visible;
+               opacity: 1;
+
+               
+             }
+
+             #joke {
+               width:150px;
+               visibility: hidden;
+             }
+             
+             #next-prompt:hover { 
+               background-color: #16631f; 
+               color: #e6ca2e; 
+               font-weight: bold;
+               cursor: pointer;
+             }
+             
+             #next-prompt:active { 
+               background-color: white; 
+               color: #16631f;
+               font-weight: bold;
+              }
+             
+             #pwrap {
+               position: absolute;
+               height: 100px;
+               vertical-align: middle;
+              margin: 0;
+              top: 50%;
+              left: 50%;
+              -ms-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+             }
+             
+             
+            
+        </style>
+
         <script>
             
-            /*********/
-            
+
             const API_URL = "https://api.aakhilv.me/fun/wyr";
-            const JOKE_URL = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,racist,sexist,explicit&type=single";
+            const JOKE_URL = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,racist,sexist,explicit&type=single"
             const EDGECASE_1 = "Would you have an Alien friend or a Superhero friend?";
             const EDGECASE_2 = "If you had to give up one thing for the rest of your life, would it be brushing your hair or brushing your teeth?";
             const EDGECASE_3 = "Would you feel worse if no one showed up to your wedding or to your funeral?";
@@ -25,7 +174,8 @@
             var option1;
             var option2;
             var ready = false;
-            
+            var called = false;
+
             <?php 
             
             if(isset($_POST['prompt'])) {
@@ -37,7 +187,8 @@
             }
             
             ?>
-      
+
+
             async function getPrompt(URL)
             {
               const response = await fetch(URL);
@@ -88,11 +239,13 @@
           
               
               froggyTalk(q);
+            
               
             }
             
             function froggyTalk(q)
             {
+              
               const lettersPerAnim = 5;
               const textFrequency = 40
               for(let i = 0; i < q.length; i++){
@@ -108,7 +261,7 @@
                             
                           if (i == q.length - 1) {
                             ready = true;
-                            donePrint = true;
+                            eventListener(wyr_or_joke)
                           }
                       }, 
                   i*textFrequency
@@ -119,37 +272,11 @@
               
             }
             
-            function bubbleHover()
-            {
-              if (ready) {
-                this.style.color="rgba(0, 0, 0, 0.2)";
-                button = document.getElementById("next-prompt");
-                button.style.visibility = "visible";
-                button.style.opacity = 1;
-              } else {
-                this.style.color="black";
-              }
-            }
-            
-            function bubbleOut()
-            {
-              this.style.color="black";
-
-              button = document.getElementById("next-prompt");
-              button.style.visibility = "hidden";
-              button.style.opacity = 0;
-            }
-            
-            function eventListener()
+            function eventListener(wyr_or_joke)
             {
               
-              if (!ready) {
-                window.setTimeout(eventListener, 100);
-              } else {
-                
-                bubble = document.getElementById("speech-bubble");
-                bubble.addEventListener('mouseout', bubbleOut);
-                
+              if (wyr_or_joke == "wyr"){
+                called = false;
                 button1 = document.getElementById("op1");
                 button2 = document.getElementById("op2");
                 
@@ -160,7 +287,10 @@
                 button2.addEventListener("mouseover", highlightOption);
                 button1.addEventListener("mouseout", unhighlightOption);
                 button2.addEventListener("mouseout", unhighlightOption);
-              }
+              } 
+              console.log("about to change attr")
+              $("#joke").show();
+              $("#joke").css("visibility", "inherit");
               
           
             }
@@ -193,52 +323,76 @@
               document.getElementById("shown").innerHTML = prompt;
             }
          	
-            window.onload = function(){
+          
+            newPrompt('wyr');
             
-              if (ready == false) {
-                newPrompt();
-              } else {
-                document.getElementById("next-prompt").value = "Next Prompt!";
-                finalButton();
-              }
-              
-            }
-            
-            function finalButton()
+            function newPrompt(wyr_or_joke) 
             {
-              
-              if (!donePrint) {
-                window.setTimeout(finalButton, 100);
-              } else {
-                var bubble = document.getElementById("speech-bubble");
-                bubble.addEventListener('mouseover', bubbleHover);
-                bubble.addEventListener('mouseout', bubbleOut);
-              }
-              
-            }
-            
-            function newPrompt() 
-            {
+              ready = false;
+              $("#joke").hide();
               $("#op1").hide();
               $("#op2").hide();
-              document.getElementById("next-prompt").value = "Different Prompt";
-              ready = false;
-              
-              button = document.getElementById("next-prompt");
-              button.style.visibility = "hidden";
-              button.style.opacity = 0;
-              
-              var bubble = document.getElementById("speech-bubble");
-              bubble.addEventListener('mouseover', bubbleHover);
-              bubble.style.color = "black";
-              
-              getPrompt()
-                .then(prompt => printPrompt(prompt))
-                .then(eventListener)
+              getPrompt((wyr_or_joke == 'joke') ? JOKE_URL : API_URL)
+                .then(prompt => printPrompt(prompt, wyr_or_joke))
                 .catch(error => console.log("Caught exception: " + error));
             }
             
-            function setlinks(prompt) {
+            /*********/
+    
+        </script>
+    </head>
+
+
+
+    <body>
+        <ul>
+            <li><a href="contact.html" id="contact">Contact Us</a></li>
+        </ul>
+        
+        <div class="share-buttons">
+            <a href="#" id="facebook" target="_blank">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" id="twitter" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" id="pinterest" target="_blank">
+                <i class="fab fa-pinterest"></i>
+            </a>
+            <a href="#" id="linkedin" target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="#" id="whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+        
+     <form action="" method="post">
+        <input type="hidden" name="prompt" id="prompt">
+        <!-- Display the question -->
+        <div class="prompt-wrapper">
+          <input class="prompt" id="op1" type="submit" name="option1" value="Option 1">
+          <div class="prompt" id="speech-bubble"><div id="pwrap"><input class="prompt" id="next-prompt" type="button" name="diffprompt" value="Different Prompt" onclick="newPrompt('wyr')"></div><span id="shown">Would you rather...</span><span id="hidden">her asdfasdf asdf</span></div>
+          <input class="prompt" id="op2" type="submit" name="option2" value="Option 2">
+        </div>
+        <a class="container" title="Frog Cartoon Picture from https://clipartmag.com/frog-cartoon-picture">
+            <img src="images/frog-body.png" id="frog-body" /></a>
+    <!-- TODO currently after you tell a joke, if you scroll over the "option 1 option 2 buttons it breaks" -->
+            <div class="prompt"><input type="button" class="prompt" id="joke" onclick="newPrompt('joke')" value="Tell me a joke!"></div>
+            </form><br>
+            <!-- <iframe name="content" class="iframe" id="iframe"></iframe><br><br> -->
+
+
+        <footer>
+               <p>
+                © EARS
+               </p> 
+        </footer>
+
+        <script>
+            links();
+            
+            function links() {
                 const facebookBtn = document.getElementById("facebook");
                 const twitterBtn = document.getElementById("twitter");
                 const pinterestBtn = document.getElementById("pinterest");
@@ -247,7 +401,7 @@
                 
                 const postImg = encodeURI("images/frog-body-with-mouth.png".src);
                 let postUrl = encodeURI(document.location.href);
-                let postTitle = encodeURI(prompt);
+                let postTitle = encodeURI("Check out this great new game! ");
                 
                 facebookBtn.setAttribute(
                     "href",
@@ -274,54 +428,6 @@
                     `https://wa.me/?text=${postTitle} ${postUrl}`
                 );
             }
-            
-            /*********/
-    
         </script>
-    </head>
-
-
-
-    <body>
-        <ul>
-            <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-        
-        <div class="share-buttons">
-            <a href="#" target="_blank" id="facebook">
-                <i class="fab fa-facebook"></i>
-            </a>
-            <a href="#" target="_blank" id="twitter">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" target="_blank" id="pinterest">
-                <i class="fab fa-pinterest"></i>
-            </a>
-            <a href="#" target="_blank" id="linkedin">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="#" target="_blank" id="whatsapp">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-        </div>
-        
-     <form action="" method="post">
-        <input type="hidden" name="prompt" id="prompt">
-        <!-- Display the question -->
-        <div class="prompt-wrapper">
-          <input class="prompt" id="op1" type="submit" name="option1" value="Option 1">
-          <div class="prompt" id="speech-bubble"><div id="pwrap"><input class="prompt" id="next-prompt" type="button" name="diffprompt" value="Different Prompt" onclick="newPrompt()"></div><span id="shown">Would you rather...</span><span id="hidden">her asdfasdf asdf</span></div>
-          <input class="prompt" id="op2" type="submit" name="option2" value="Option 2">
-        </div>
-        <a class="container" title="Frog Cartoon Picture from https://clipartmag.com/frog-cartoon-picture">
-            <img src="images/frog-body.png" id="frog-body" /></a>
-    
-          </form><br>
-
-        <footer>
-               <p>
-                © EARS
-               </p> 
-        </footer>
     </body>
  </html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<?php require 'database.php' ?>
+<?php require 'test.php' ?>
 
 <html lang="en" dir="ltr">
     <head>
@@ -8,8 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta keyword="Virtual Pet, Frog, Would You Rather, Game">
         <title>Would You Rather | Virtual Frog</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="style2.css">
+        <link rel="stylesheet" href="style10.css">
+        <link rel="stylesheet" href="style20.css">
         <link rel="icon" href="images/icon.png" type="image/png">
         <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
         <script>
