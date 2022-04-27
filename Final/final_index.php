@@ -136,7 +136,7 @@
                cursor: pointer;
               }
               #joke2{
-                width:170px;
+                width:185px;
                 margin-top: 20px;
 
               }
@@ -240,6 +240,10 @@
             {
               const response = await fetch(URL);
               prompt = await response.json();
+              
+              if (URL == JOKE_URL) {
+                prompt = prompt.joke;
+              }
               return prompt;
             }
             
@@ -280,9 +284,9 @@
                   
                   console.log("option 1: " + option1);
                   console.log("option 2: " + option2);
-              } else {
-                  q = q.joke;
-              }
+              } //else {
+                //  q = q.joke;
+            //  }
           
               
               froggyTalk(q, wyr_or_joke);
@@ -341,8 +345,8 @@
               bubble.addEventListener('mouseout', bubbleOut);
               $("#joke").show();
               $("#joke").css("visibility", "inherit");
-            //  $("#joke2").show();
-            //  $("#joke2").css("visibility", "inherit");
+             $("#joke2").show();
+             $("#joke2").css("visibility", "inherit");
               
           
             }
@@ -423,7 +427,7 @@
                 newPrompt('wyr');
               } else {
                 $("#joke").hide();
-              //  $("#joke2").hide();
+               $("#joke2").hide();
                 $("#op1").hide();
                 $("#op2").hide();
                 
@@ -446,7 +450,7 @@
                 document.getElementById("next-prompt").style.width = "170px";
               }
               $("#joke").hide();
-          //    $("#joke2").hide();
+             $("#joke2").hide();
               $("#op1").hide();
               $("#op2").hide();
               
@@ -510,7 +514,7 @@
             <img src="images/frog-body.png" id="frog-body" /></a>
     <!-- TODO currently after you tell a joke, if you scroll over the "option 1 option 2 buttons it breaks" -->
             <input type="button" class="prompt" id="joke" onclick="newPrompt('joke')" value="Tell me a joke!">
-            <!-- <input type="button" class="prompt" id="joke2" onclick="newPrompt('wyr')" value="Would you rather?"> -->
+            <input type="button" class="prompt" id="joke2" onclick="newPrompt('wyr')" value="Would you rather?">
             </form><br>
             <!-- <iframe name="content" class="iframe" id="iframe"></iframe><br><br> -->
 
@@ -524,6 +528,8 @@
         <script>
             
             function setlinks(prompt) {
+              
+              
                 const facebookBtn = document.getElementById("facebook");
                 const twitterBtn = document.getElementById("twitter");
                 const pinterestBtn = document.getElementById("pinterest");
