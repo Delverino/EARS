@@ -464,7 +464,9 @@
                 
                 const postImg = encodeURI("images/frog-body-with-mouth.png".src);
                 let postUrl = encodeURI(document.location.href);
-                let postTitle = encodeURI(prompt);
+                <?
+                    echo "let postTitle = encodeURI(" . $_POST['prompt']) .")";
+                ?>
                 
                 
                 facebookBtn.setAttribute(
@@ -478,21 +480,15 @@
                 );
                 
                 pinterestBtn.setAttribute(
-                    "href",
-                    //'https://pinterest.com/pin/create/bookmarklet/?media=${postImg}&url=${postUrl}&description=${postTitle}'
-                     "https://pinterest.com/pin/create/bookmarklet/?media=" + postImg + "&url=" + postUrl + "&description=" + postTitle
+                    "href","https://pinterest.com/pin/create/bookmarklet/?media=" + postImg + "&url=" + postUrl + "&description=" + postTitle
                 );
                 
                 linkedinBtn.setAttribute(
-                    "href",
-                //    'https://www.linkedin.com/shareArticle?url=${postUrl}&title=${postTitle}'
-                    "https://www.linkedin.com/shareArticle?url=" + postUrl + "&title=" + postTitle
+                    "href","https://www.linkedin.com/shareArticle?url=" + postUrl + "&title=" + postTitle
                 );
                 
                 whatsappBtn.setAttribute(
-                    "href",
-                  //  'https://wa.me/?text=${postTitle} ${postUrl}'
-                    "https://wa.me/?text=" + postTitle + postUrl
+                    "href","https://wa.me/?text=" + postTitle + postUrl
                 );
             }
         </script>
