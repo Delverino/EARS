@@ -133,6 +133,7 @@
                margin-right:auto;
                display: block;
                margin-top: 60px;
+               cursor: pointer;
               }
               #joke2{
                 width:170px;
@@ -307,7 +308,8 @@
                             
                           if (i == q.length - 1) {
                             ready = true;
-                            eventListener(wyr_or_joke)
+                            eventListener(wyr_or_joke);
+                            donePrint = true;
                           }
                       }, 
                   i*textFrequency
@@ -334,13 +336,47 @@
                 button1.addEventListener("mouseout", unhighlightOption);
                 button2.addEventListener("mouseout", unhighlightOption);
               } 
-              console.log("about to change attr")
+            //  console.log("about to change attr")
+              bubble = document.getElementById("speech-bubble");
+              bubble.addEventListener('mouseout', bubbleOut);
               $("#joke").show();
               $("#joke").css("visibility", "inherit");
-              $("#joke2").show();
-              $("#joke2").css("visibility", "inherit");
+            //  $("#joke2").show();
+            //  $("#joke2").css("visibility", "inherit");
               
           
+            }
+            
+            function finalButton()
+            {
+              if (!donePrint) {
+                window.setTimeout(finalButton, 100);
+              } else {
+                var bubble = document.getElementById("speech-bubble");
+                bubble.addEventListener('mouseover', bubbleHover);
+                bubble.addEventListener('mouseout', bubbleOut);
+              }
+            }
+            
+            function bubbleHover()
+            {
+              if (ready) {
+                this.style.color="rgba(0, 0, 0, 0.2)";
+                button = document.getElementById("next-prompt");
+                button.style.visibility = "visible";
+                button.style.opacity = 1;
+              } else {
+                this.style.color="black";
+              }
+            }
+            
+            function bubbleOut()
+            {
+              this.style.color="black";
+
+              button = document.getElementById("next-prompt");
+              button.style.visibility = "hidden";
+              button.style.opacity = 0;
             }
             
             function highlightOption()
@@ -372,30 +408,63 @@
             }
          	
           
-            if (ready == false) {
-              newPrompt('wyr');
-            } else {
-              $("#joke").hide();
-              $("#joke2").hide();
-              $("#op1").hide();
-              $("#op2").hide();
+            // if (ready == false) {
+            //   newPrompt('wyr');
+            // } else {
+            //   $("#joke").hide();
+            //   $("#joke2").hide();
+            //   $("#op1").hide();
+            //   $("#op2").hide();
+            // }
+            // 
+            window.onload = function() {
+              setlinks("Check out this cool site!");
+              if (ready == false) {
+                newPrompt('wyr');
+              } else {
+                $("#joke").hide();
+              //  $("#joke2").hide();
+                $("#op1").hide();
+                $("#op2").hide();
+                
+                document.getElementById("next-prompt").value = "Next Prompt!";
+                finalButton();
+              }
+              
             }
-            
         
       
             
             function newPrompt(wyr_or_joke) 
             {
               ready = false;
+              if (wyr_or_joke == 'joke') {
+                document.getElementById("next-prompt").value = "Would You Rather?";
+                document.getElementById("next-prompt").style.width = "200px";
+              } else {
+                document.getElementById("next-prompt").value = "Different Prompt";
+                document.getElementById("next-prompt").style.width = "170px";
+              }
               $("#joke").hide();
-              $("#joke2").hide();
+          //    $("#joke2").hide();
               $("#op1").hide();
               $("#op2").hide();
+              
+              button = document.getElementById("next-prompt");
+              button.style.visibility = "hidden";
+              button.style.opacity = 0;
+              
+              var bubble = document.getElementById("speech-bubble");
+              bubble.addEventListener('mouseover', bubbleHover);
+              bubble.style.color = "black";
+              
               getPrompt((wyr_or_joke == 'joke') ? JOKE_URL : API_URL)
+                .then(prompt => setlinks(prompt))
                 .then(prompt => printPrompt(prompt, wyr_or_joke))
+              //  .then(eventListener(wyr_or_joke))
                 .catch(error => console.log("Caught exception: " + error));
             }
-            
+  
             /*********/
     
         </script>
@@ -441,7 +510,7 @@
             <img src="images/frog-body.png" id="frog-body" /></a>
     <!-- TODO currently after you tell a joke, if you scroll over the "option 1 option 2 buttons it breaks" -->
             <input type="button" class="prompt" id="joke" onclick="newPrompt('joke')" value="Tell me a joke!">
-            <input type="button" class="prompt" id="joke2" onclick="newPrompt('wyr')" value="Would you rather">
+            <!-- <input type="button" class="prompt" id="joke2" onclick="newPrompt('wyr')" value="Would you rather?"> -->
             </form><br>
             <!-- <iframe name="content" class="iframe" id="iframe"></iframe><br><br> -->
 
@@ -453,7 +522,6 @@
         </footer> -->
 
         <script>
-            setlinks(prompt);
             
             function setlinks(prompt) {
                 const facebookBtn = document.getElementById("facebook");
@@ -462,12 +530,10 @@
                 const linkedinBtn = document.getElementById("linkedin");
                 const whatsappBtn = document.getElementById("whatsapp");
                 
-                const postImg = encodeURI("images/frog-body-with-mouth.png".src);
+                const postImg = encodeURI("https://www.roberty.sgedu.site/final_project/images/frog-body-with-mouth.png");
                 let postUrl = encodeURI(document.location.href);
-                <?
-                    echo "let postTitle = encodeURI(" . $_POST['prompt']) .")";
-                ?>
-                
+                let postTitle = encodeURI(prompt);
+
                 
                 facebookBtn.setAttribute(
                     "href",
@@ -490,6 +556,8 @@
                 whatsappBtn.setAttribute(
                     "href","https://wa.me/?text=" + postTitle + postUrl
                 );
+                
+                return prompt;
             }
         </script>
     </body>

@@ -116,3 +116,11 @@ input[type=submit]{
     color: #25d366;
 }
 
+input[type=text] {
+  border-radius: 10px;
+  border: none;
+  padding: 10px 15px;
+  font-size: 15px;
+  width: 300px;
+}
+
