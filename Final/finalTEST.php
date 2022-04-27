@@ -55,7 +55,7 @@
             .prompt-wrapper {
               text-align: center;
               vertical-align: middle;
-              margin-top:100px;
+              margin-top:20px;
             }
             
             .prompt {
@@ -307,6 +307,7 @@
                             
                           if (i == q.length - 1) {
                             ready = true;
+                            donePrint = true;
                             eventListener(wyr_or_joke)
                           }
                       }, 
@@ -370,17 +371,52 @@
             {
               document.getElementById("shown").innerHTML = prompt;
             }
-         	
-          
-            if (ready == false) {
-              newPrompt('wyr');
-            } else {
-              $("#joke").hide();
-              $("#joke2").hide();
-              $("#op1").hide();
-              $("#op2").hide();
+            
+            window.onload = function(){
+            
+              if (ready == false) {
+                newPrompt('wyr');
+              } else {
+                $("#joke").hide();
+                $("#joke2").hide();
+                $("#op1").hide();
+                $("#op2").hide();
+                document.getElementById("next-prompt").value = "Next Prompt!";
+                finalButton();
+              }
+              
+            }
+            function finalButton()
+            {
+              if (!donePrint) {
+                window.setTimeout(finalButton, 100);
+              } else {
+                var bubble = document.getElementById("speech-bubble");
+                bubble.addEventListener('mouseover', bubbleHover);
+                bubble.addEventListener('mouseout', bubbleOut);
+              }
             }
             
+            function bubbleHover()
+            {
+              if (ready) {
+                this.style.color="rgba(0, 0, 0, 0.2)";
+                button = document.getElementById("next-prompt");
+                button.style.visibility = "visible";
+                button.style.opacity = 1;
+              } else {
+                this.style.color="black";
+              }
+            }
+            
+            function bubbleOut()
+            {
+              this.style.color="black";
+
+              button = document.getElementById("next-prompt");
+              button.style.visibility = "hidden";
+              button.style.opacity = 0;
+            }
         
       
             
@@ -453,7 +489,7 @@
         </footer> -->
 
         <script>
-            links();
+            //links();
             
             function setlinks(prompt) {
                 const facebookBtn = document.getElementById("facebook");
@@ -468,27 +504,27 @@
                 
                 facebookBtn.setAttribute(
                     "href",
-                    `https://www.facebook.com/sharer.php?u=${postUrl}`
+                    'https://www.facebook.com/sharer.php?u=${postUrl}'
                 );
                 
                 twitterBtn.setAttribute(
                     "href",
-                    `https://twitter.com/share?url=${postUrl}&text=${postTitle}`
+                    'https://twitter.com/share?url=${postUrl}&text=${postTitle}'
                 );
                 
                 pinterestBtn.setAttribute(
                     "href",
-                    `https://pinterest.com/pin/create/bookmarklet/?media=${postImg}&url=${postUrl}&description=${postTitle}`
+                    'https://pinterest.com/pin/create/bookmarklet/?media=${postImg}&url=${postUrl}&description=${postTitle}'
                 );
                 
                 linkedinBtn.setAttribute(
                     "href",
-                    `https://www.linkedin.com/shareArticle?url=${postUrl}&title=${postTitle}`
+                    'https://www.linkedin.com/shareArticle?url=${postUrl}&title=${postTitle}'
                 );
                 
                 whatsappBtn.setAttribute(
                     "href",
-                    `https://wa.me/?text=${postTitle} ${postUrl}`
+                    'https://wa.me/?text=${postTitle} ${postUrl}'
                 );
             }
         </script>
