@@ -84,7 +84,7 @@ input[type=submit]{
     padding: 16px;
     width: 100%;
     justify-content: center;
-    position: fixed;
+    /* position: fixed; */
 }
 
 .share-buttons a {

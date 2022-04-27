@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<?php require 'database.php' ?>
+<?php require 'test.php' ?>
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta keyword="Virtual Pet, Frog, Would You Rather, Game">
         <title>Would You Rather | Virtual Frog</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style10.css">
+        <link rel="stylesheet" href="style20.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
         <link rel="icon" href="images/icon.png" type="image/png">
         <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
@@ -73,7 +74,7 @@
               background-color: #16631f;
               transition-duration: 0.4s;
               color: white;
-            padding: 12px;}
+              padding: 12px;}
             
             
             input[type=submit]:hover, #joke:hover, #joke2:hover { 
@@ -164,6 +165,47 @@
              }
              
              
+             @media screen and (max-width: 900px) {
+               .wrapper2 {
+                 width: 400px;
+                 margin: auto;
+               }
+               
+               #op1 {
+                 margin-bottom: 15px;
+               }
+               
+               #op2 {
+                 margin-top: 15px;
+               }
+               
+               #frog-body {
+                 width: 150px;
+               }
+               
+               ul {
+                 display: none;
+                 
+               }
+               
+               .share-buttons a {
+                   margin: 0 10px;
+               }
+               
+             }
+             
+             @media screen and (max-width: 400px) {
+               
+               .wrapper2 {
+                 width: 98%;
+               }
+               
+               #speech-bubble {
+                 width: 80%;
+               }
+             }
+             
+             
             
         </style>
 
@@ -188,7 +230,7 @@
                     $('#op1').hide(); 
                     $('#op2').hide(); 
                     var donePrint = false;
-                    froggyTalk('{$message}');"; 
+                    froggyTalk('{$message}', 'joke');"; 
             }
             
             ?>
@@ -330,7 +372,17 @@
             }
          	
           
-            newPrompt('wyr');
+            if (ready == false) {
+              newPrompt('wyr');
+            } else {
+              $("#joke").hide();
+              $("#joke2").hide();
+              $("#op1").hide();
+              $("#op2").hide();
+            }
+            
+        
+      
             
             function newPrompt(wyr_or_joke) 
             {
@@ -357,19 +409,19 @@
         </ul>
         
         <div class="share-buttons">
-            <a href="#" id="facebook">
+            <a href="#" id="facebook" target="_blank">
                 <i class="fab fa-facebook"></i>
             </a>
-            <a href="#" id="twitter">
+            <a href="#" id="twitter" target="_blank">
                 <i class="fab fa-twitter"></i>
             </a>
-            <a href="#" id="pinterest">
+            <a href="#" id="pinterest" target="_blank">
                 <i class="fab fa-pinterest"></i>
             </a>
-            <a href="#" id="linkedin">
+            <a href="#" id="linkedin" target="_blank">
                 <i class="fab fa-linkedin"></i>
             </a>
-            <a href="#" id="whatsapp">
+            <a href="#" id="whatsapp" target="_blank">
                 <i class="fab fa-whatsapp"></i>
             </a>
         </div>
@@ -391,16 +443,16 @@
             <!-- <iframe name="content" class="iframe" id="iframe"></iframe><br><br> -->
 
 
-        <footer>
+        <!-- <footer>
                <p>
                 © EARS
                </p> 
-        </footer>
+        </footer> -->
 
         <script>
             links();
             
-            function links() {
+            function setlinks(prompt) {
                 const facebookBtn = document.getElementById("facebook");
                 const twitterBtn = document.getElementById("twitter");
                 const pinterestBtn = document.getElementById("pinterest");
@@ -409,7 +461,7 @@
                 
                 const postImg = encodeURI("images/frog-body-with-mouth.png".src);
                 let postUrl = encodeURI(document.location.href);
-                let postTitle = encodeURI("Check out this great new game! ");
+                let postTitle = encodeURI(prompt);
                 
                 facebookBtn.setAttribute(
                     "href",

@@ -53,7 +53,7 @@
             .prompt-wrapper {
               text-align: center;
               vertical-align: middle;
-              margin-top:100px;
+              margin-top:20px;
             }
             
             .prompt {
@@ -160,6 +160,50 @@
               left: 50%;
               -ms-transform: translate(-50%, -50%);
               transform: translate(-50%, -50%);
+             }
+             
+             form {
+               
+             }
+             
+             @media screen and (max-width: 900px) {
+               .wrapper2 {
+                 width: 400px;
+                 margin: auto;
+               }
+               
+               #op1 {
+                 margin-bottom: 15px;
+               }
+               
+               #op2 {
+                 margin-top: 15px;
+               }
+               
+               #frog-body {
+                 width: 150px;
+               }
+               
+               ul {
+                 display: none;
+                 
+               }
+               
+               .share-buttons a {
+                   margin: 0 10px;
+               }
+               
+             }
+             
+             @media screen and (max-width: 400px) {
+               
+               .wrapper2 {
+                 width: 98%;
+               }
+               
+               #speech-bubble {
+                 width: 80%;
+               }
              }
              
              
@@ -396,9 +440,12 @@
         <input type="hidden" name="prompt" id="prompt">
         <!-- Display the question -->
         <div class="prompt-wrapper">
-          <input class="prompt" id="op1" type="submit" name="option1" value="Option 1">
-          <div class="prompt" id="speech-bubble"><div id="pwrap"><input class="prompt" id="next-prompt" type="button" name="diffprompt" value="Different Prompt" onclick="newPrompt('wyr')"></div><span id="shown">Would you rather...</span><span id="hidden">her asdfasdf asdf</span></div>
-          <input class="prompt" id="op2" type="submit" name="option2" value="Option 2">
+          <div class="wrapper2">
+            <input class="prompt" id="op1" type="submit" name="option1" value="Option 1">
+            <div class="prompt" id="speech-bubble"><div id="pwrap"><input class="prompt" id="next-prompt" type="button" name="diffprompt" value="Different Prompt" onclick="newPrompt('wyr')"></div><span id="shown">Would you rather...</span><span id="hidden">her asdfasdf asdf</span></div>
+            <input class="prompt" id="op2" type="submit" name="option2" value="Option 2">
+
+          </div>
         </div>
         <a class="container" title="Frog Cartoon Picture from https://clipartmag.com/frog-cartoon-picture">
             <img src="images/frog-body.png" id="frog-body" /></a>

@@ -200,7 +200,6 @@
             
             function finalButton()
             {
-              
               if (!donePrint) {
                 window.setTimeout(finalButton, 100);
               } else {
@@ -208,7 +207,6 @@
                 bubble.addEventListener('mouseover', bubbleHover);
                 bubble.addEventListener('mouseout', bubbleOut);
               }
-              
             }
             
             function newPrompt() 
